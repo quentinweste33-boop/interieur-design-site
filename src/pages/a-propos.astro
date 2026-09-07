@@ -3,7 +3,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { founderPortrait } from "../data/projects";
 ---
 
-<BaseLayout title="À propos">
+<BaseLayout
+  title="À propos"
+  description="Nath, architecte d'intérieur installée en Polynésie française depuis plus de dix ans, conçoit des intérieurs sobres et sensibles pour l'hôtellerie et le résidentiel."
+  ogImage={founderPortrait}
+>
   <section class="grid grid-cols-1 md:grid-cols-2">
     <div class="order-2 flex items-center px-6 py-20 md:order-1 md:px-16 md:py-0">
       <div class="max-w-lg">

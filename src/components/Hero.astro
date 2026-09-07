@@ -4,23 +4,34 @@ import { heroPoster } from "../data/projects";
 
 <section class="relative h-screen w-full overflow-hidden">
   <!-- TODO: remplacer par la vraie vidéo hero de la cliente une fois confirmee.
-       En attendant, src pointe vers un fichier local absent : le poster
+       En attendant, data-src pointe vers un fichier local absent : le poster
        (image reelle verifiee) sert de fallback visuel, comme prevu au brief. -->
   <video
     class="absolute inset-0 h-full w-full object-cover"
+    data-hero-video
+    data-src="/videos/hero-placeholder.mp4"
+    aria-hidden="true"
     autoplay
     muted
     loop
     playsinline
+    preload="none"
     poster={heroPoster}
   >
-    <source src="/videos/hero-placeholder.mp4" type="video/mp4" />
   </video>
 
-  <div class="absolute inset-0 bg-anthracite/25"></div>
+  <!--
+    Dégradé plutôt qu'un voile uniforme : plus sombre en haut (lisibilité du
+    header superposé) et en bas (indicateur de scroll), plus léger au centre
+    pour laisser respirer l'image/vidéo.
+  -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-anthracite/55 via-anthracite/20 to-anthracite/45"
+  >
+  </div>
 
   <div class="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-    <p class="mb-5 text-xs tracking-[0.4em] text-ivoire/80 uppercase" data-reveal>
+    <p class="mb-5 text-xs tracking-[0.4em] text-ivoire/90 uppercase" data-reveal>
       Architecture d'intérieur
     </p>
     <h1
@@ -43,3 +54,7 @@ import { heroPoster } from "../data/projects";
   >
   </div>
 </section>
+
+<script>
+  import "../scripts/hero-video.js";
+</script>

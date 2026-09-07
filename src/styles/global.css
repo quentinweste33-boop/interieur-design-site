@@ -50,7 +50,8 @@ html.lenis body {
   overflow: hidden;
 }
 
-[data-reveal] {
+[data-reveal],
+[data-stagger-item] {
   opacity: 0;
   transform: translateY(28px);
 }
@@ -58,4 +59,22 @@ html.lenis body {
 /* PhotoSwipe restyle to match the editorial palette */
 .pswp {
   --pswp-bg: #16140f;
+}
+
+/* Visible focus ring for keyboard navigation (header, filtres, formulaire,
+   déclencheurs de la galerie PhotoSwipe). */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-bronze);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-stagger-item] {
+    opacity: 1;
+    transform: none;
+  }
 }

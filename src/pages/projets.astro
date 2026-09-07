@@ -1,9 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
+import { projects } from "../data/projects";
 ---
 
-<BaseLayout title="Projets">
+<BaseLayout
+  title="Projets"
+  description="Portfolio de projets d'architecture d'intérieur en Polynésie française : hôtels, résidences, retail, restaurants et scénographies."
+  ogImage={projects[0].cover}
+>
   <section class="mx-auto max-w-[1400px] px-6 pt-20 pb-20 md:px-10">
     <p class="mb-4 text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>
       Portfolio

@@ -1,19 +1,27 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+import { heroPoster } from "../data/projects";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
   overlayHeader?: boolean;
 }
 
 const {
   title,
   description = "Interieur Design — architecture d'intérieur haut de gamme en Polynésie française.",
+  ogImage = heroPoster,
   overlayHeader = false,
 } = Astro.props;
+
+const pageTitle = `${title} — Interieur Design`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const absoluteOgImage = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -22,12 +30,31 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <meta name="description" content={description} />
-    <title>{title} — Interieur Design</title>
+    <link rel="canonical" href={canonicalURL} />
+    <title>{pageTitle}</title>
+
+    <!-- Open Graph / réseaux sociaux (métadonnées provisoires, à affiner avec
+         la charte définitive de la cliente). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Interieur Design" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={absoluteOgImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+
+    <ClientRouter />
   </head>
   <body class="overflow-x-hidden bg-ivoire text-anthracite">
     <Header overlay={overlayHeader} />
-    <main>
+    <main class:list={[!overlayHeader && "pt-24 md:pt-28"]} transition:animate="fade">
       <slot />
     </main>
     <Footer />
@@ -35,6 +62,8 @@ const {
     <script>
       import "../scripts/smooth-scroll.js";
       import "../scripts/reveal-animations.js";
+      import "../scripts/grid-stagger.js";
+      import "../scripts/header-scroll.js";
     </script>
   </body>
 </html>

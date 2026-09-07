@@ -12,17 +12,19 @@ const links = [
   { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
-
-const textColor = overlay ? "text-white" : "text-anthracite";
 ---
 
 <header
+  id="site-header"
+  data-overlay={overlay ? "true" : "false"}
   class:list={[
-    "top-0 left-0 right-0 z-40",
-    overlay ? "absolute" : "relative border-b border-pierre/40 bg-ivoire",
+    "fixed inset-x-0 top-0 z-40 border-b transition-[background-color,color,border-color,box-shadow] duration-500",
+    overlay
+      ? "border-transparent bg-transparent text-ivoire"
+      : "border-pierre/40 bg-ivoire/95 text-anthracite backdrop-blur-sm",
   ]}
 >
-  <div class={`mx-auto flex max-w-[1400px] items-center justify-between px-6 py-7 md:px-10 ${textColor}`}>
+  <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 md:px-10">
     <a href="/" class="font-serif text-lg tracking-[0.25em] uppercase">
       Interieur Design
     </a>
@@ -48,6 +50,7 @@ const textColor = overlay ? "text-white" : "text-anthracite";
       class="text-sm tracking-wide md:hidden"
       aria-label="Ouvrir le menu"
       aria-expanded="false"
+      aria-controls="mobile-menu"
     >
       Menu
     </button>
@@ -68,12 +71,20 @@ const textColor = overlay ? "text-white" : "text-anthracite";
 </header>
 
 <script>
-  const toggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("mobile-menu");
+  // Rattaché via astro:page-load (et non exécuté une seule fois au chargement
+  // du module) car le header — donc #menu-toggle — est recréé à chaque
+  // transition de page avec les View Transitions d'Astro.
+  function initMobileMenu() {
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    if (!toggle || !menu) return;
 
-  toggle?.addEventListener("click", () => {
-    const isOpen = menu?.classList.toggle("flex");
-    menu?.classList.toggle("hidden");
-    toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
-  });
+    toggle.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("flex");
+      menu.classList.toggle("hidden");
+      toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    });
+  }
+
+  document.addEventListener("astro:page-load", initMobileMenu);
 </script>
