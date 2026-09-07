@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+---
+
+<BaseLayout title="Projets">
+  <section class="mx-auto max-w-[1400px] px-6 pt-20 pb-20 md:px-10">
+    <p class="mb-4 text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>
+      Portfolio
+    </p>
+    <h1 class="max-w-2xl font-serif text-4xl leading-tight md:text-5xl" data-reveal>
+      Hôtels, résidences, retail, restaurants et scénographies
+    </h1>
+    <p class="mt-6 max-w-xl text-anthracite/70" data-reveal>
+      Une sélection de projets menés en Polynésie française. Cliquez sur un projet
+      pour ouvrir sa galerie complète.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-6 pb-32 md:px-10">
+    <ProjectGrid />
+  </section>
+</BaseLayout>

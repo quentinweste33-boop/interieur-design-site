@@ -1,0 +1,79 @@
+---
+interface Props {
+  overlay?: boolean;
+}
+
+const { overlay = false } = Astro.props;
+const { pathname } = Astro.url;
+
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/projets", label: "Projets" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Contact" },
+];
+
+const textColor = overlay ? "text-white" : "text-anthracite";
+---
+
+<header
+  class:list={[
+    "top-0 left-0 right-0 z-40",
+    overlay ? "absolute" : "relative border-b border-pierre/40 bg-ivoire",
+  ]}
+>
+  <div class={`mx-auto flex max-w-[1400px] items-center justify-between px-6 py-7 md:px-10 ${textColor}`}>
+    <a href="/" class="font-serif text-lg tracking-[0.25em] uppercase">
+      Interieur Design
+    </a>
+
+    <nav class="hidden gap-10 text-sm tracking-wide md:flex">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "transition-opacity hover:opacity-60",
+              pathname === link.href ? "opacity-100" : "opacity-70",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      id="menu-toggle"
+      class="text-sm tracking-wide md:hidden"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+    >
+      Menu
+    </button>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    class="hidden flex-col gap-6 bg-anthracite px-6 py-10 text-center text-lg text-ivoire md:hidden"
+  >
+    {
+      links.map((link) => (
+        <a href={link.href} class="font-serif tracking-wide">
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("flex");
+    menu?.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+  });
+</script>

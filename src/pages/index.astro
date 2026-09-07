@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
+---
+
+<BaseLayout title="Accueil" overlayHeader>
+  <Hero />
+
+  <section class="mx-auto max-w-3xl px-6 py-28 text-center md:px-10">
+    <p class="mb-6 text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>
+      Notre approche
+    </p>
+    <p class="font-serif text-2xl leading-relaxed md:text-3xl" data-reveal>
+      Chaque projet naît d'une écoute attentive du lieu, de sa lumière et de ceux qui
+      l'habiteront. Entre résidences privées et établissements hôteliers, nous
+      dessinons des intérieurs sobres, sensibles et durables.
+    </p>
+  </section>
+
+  <PortfolioPreview />
+
+  <section class="border-t border-pierre/40 bg-beige/40">
+    <div
+      class="mx-auto flex max-w-[1400px] flex-col items-center gap-6 px-6 py-24 text-center md:px-10"
+    >
+      <h2 class="font-serif text-3xl md:text-4xl" data-reveal>
+        Un projet en réflexion ?
+      </h2>
+      <p class="max-w-md text-anthracite/70" data-reveal>
+        Discutons de votre intérieur, qu'il s'agisse d'une résidence, d'un
+        établissement hôtelier ou d'un espace commercial.
+      </p>
+      <a
+        href="/contact"
+        class="mt-4 border border-anthracite px-8 py-3 text-xs tracking-[0.2em] uppercase transition-colors hover:bg-anthracite hover:text-ivoire"
+        data-reveal
+      >
+        Prendre contact
+      </a>
+    </div>
+  </section>
+</BaseLayout>

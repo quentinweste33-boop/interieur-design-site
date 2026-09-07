@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+
+@import "photoswipe/style.css";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", -apple-system, sans-serif;
+
+  --color-ivoire: #f7f5f1;
+  --color-beige: #ede6d8;
+  --color-pierre: #c9bfaf;
+  --color-anthracite: #2a2724;
+  --color-bronze: #9c8a6e;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--color-ivoire);
+  color: var(--color-anthracite);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis smooth scroll requires the scroller root to not use native smooth-scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* PhotoSwipe restyle to match the editorial palette */
+.pswp {
+  --pswp-bg: #16140f;
+}

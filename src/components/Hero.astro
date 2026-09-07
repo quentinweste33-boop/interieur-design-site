@@ -1,0 +1,45 @@
+---
+import { heroPoster } from "../data/projects";
+---
+
+<section class="relative h-screen w-full overflow-hidden">
+  <!-- TODO: remplacer par la vraie vidéo hero de la cliente une fois confirmee.
+       En attendant, src pointe vers un fichier local absent : le poster
+       (image reelle verifiee) sert de fallback visuel, comme prevu au brief. -->
+  <video
+    class="absolute inset-0 h-full w-full object-cover"
+    autoplay
+    muted
+    loop
+    playsinline
+    poster={heroPoster}
+  >
+    <source src="/videos/hero-placeholder.mp4" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 bg-anthracite/25"></div>
+
+  <div class="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+    <p class="mb-5 text-xs tracking-[0.4em] text-ivoire/80 uppercase" data-reveal>
+      Architecture d'intérieur
+    </p>
+    <h1
+      class="max-w-3xl font-serif text-4xl leading-tight text-ivoire md:text-6xl"
+      data-reveal
+    >
+      Des intérieurs sculptés par la lumière de la Polynésie
+    </h1>
+    <a
+      href="/projets"
+      class="mt-10 border border-ivoire/70 px-8 py-3 text-xs tracking-[0.2em] text-ivoire uppercase transition-colors hover:bg-ivoire hover:text-anthracite"
+      data-reveal
+    >
+      Découvrir le portfolio
+    </a>
+  </div>
+
+  <div
+    class="absolute bottom-8 left-1/2 z-10 h-12 w-px -translate-x-1/2 bg-ivoire/50"
+  >
+  </div>
+</section>

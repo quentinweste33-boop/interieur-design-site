@@ -1,0 +1,69 @@
+---
+---
+
+<!--
+  TODO avant mise en ligne : renseigner un endpoint de formulaire sans backend
+  (Formspree, Web3Forms...) dans l'attribut action ci-dessous, une fois
+  l'adresse email de reception confirmee par la cliente. Le mailto ci-dessous
+  sert de secours immediat.
+-->
+<form
+  action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+  method="POST"
+  class="space-y-8"
+  data-reveal
+>
+  <div>
+    <label for="name" class="mb-2 block text-xs tracking-wide text-anthracite/60 uppercase"
+      >Nom</label
+    >
+    <input
+      id="name"
+      name="name"
+      type="text"
+      required
+      class="w-full border-b border-pierre bg-transparent py-2 text-anthracite outline-none transition-colors focus:border-anthracite"
+    />
+  </div>
+
+  <div>
+    <label for="email" class="mb-2 block text-xs tracking-wide text-anthracite/60 uppercase"
+      >Email</label
+    >
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      class="w-full border-b border-pierre bg-transparent py-2 text-anthracite outline-none transition-colors focus:border-anthracite"
+    />
+  </div>
+
+  <div>
+    <label
+      for="message"
+      class="mb-2 block text-xs tracking-wide text-anthracite/60 uppercase">Message</label
+    >
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      class="w-full resize-none border-b border-pierre bg-transparent py-2 text-anthracite outline-none transition-colors focus:border-anthracite"
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="border border-anthracite px-8 py-3 text-xs tracking-[0.2em] uppercase transition-colors hover:bg-anthracite hover:text-ivoire"
+  >
+    Envoyer
+  </button>
+
+  <p class="text-xs text-anthracite/40">
+    Vous pouvez aussi écrire directement à
+    <a href="mailto:contact@interieur-design.pf" class="underline hover:text-bronze"
+      >contact@interieur-design.pf</a
+    >.
+  </p>
+</form>

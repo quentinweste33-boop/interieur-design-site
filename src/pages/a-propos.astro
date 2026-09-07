@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { founderPortrait } from "../data/projects";
+---
+
+<BaseLayout title="À propos">
+  <section class="grid grid-cols-1 md:grid-cols-2">
+    <div class="order-2 flex items-center px-6 py-20 md:order-1 md:px-16 md:py-0">
+      <div class="max-w-lg">
+        <p class="mb-4 text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>
+          À propos
+        </p>
+        <h1 class="mb-8 font-serif text-4xl leading-tight md:text-5xl" data-reveal>
+          Nath
+        </h1>
+
+        <div class="space-y-5 leading-relaxed text-anthracite/80" data-reveal>
+          <p>
+            J'ai grandi entre deux lumières — celle, dense et verticale, des villes
+            que j'ai traversées pendant mes études, et celle, horizontale et
+            changeante, du lagon où j'ai posé mes outils il y a maintenant plus de
+            dix ans.
+          </p>
+          <p>
+            Après une formation en architecture d'intérieur et plusieurs années
+            passées à concevoir des espaces hôteliers et résidentiels en France
+            métropolitaine, j'ai choisi de revenir m'installer en Polynésie
+            française pour y fonder mon propre studio.
+          </p>
+          <p>
+            Je conçois chaque intérieur comme un vêtement sur-mesure : il doit
+            épouser le lieu — son climat, sa lumière, ses matières locales — et
+            ceux qui le vivent au quotidien. Ma pratique s'articule autour de trois
+            exigences : la sobriété des lignes, la qualité des matériaux et une
+            attention constante portée à l'usage réel des espaces, bien au-delà de
+            l'image.
+          </p>
+          <p>
+            Résidences privées, hôtels en rénovation, boutiques ou scénographies
+            d'événements — chaque commande est une occasion de raconter une
+            histoire différente, toujours avec la même exigence de justesse.
+          </p>
+        </div>
+
+        <a
+          href="/contact"
+          class="mt-10 inline-block border-b border-anthracite/40 pb-1 text-sm tracking-wide hover:border-anthracite"
+          data-reveal
+        >
+          Échanger sur votre projet →
+        </a>
+      </div>
+    </div>
+
+    <div class="order-1 h-[60vh] md:order-2 md:h-screen">
+      <img
+        src={founderPortrait}
+        alt="Portrait de Nath, fondatrice d'Interieur Design"
+        class="h-full w-full object-cover"
+        width="1200"
+        height="1500"
+      />
+    </div>
+  </section>
+</BaseLayout>
