@@ -13,30 +13,35 @@ import { realisations } from "../data/realisations";
       class="carousel-track flex snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth"
     >
       {
-        realisations.map((item) => (
-          <div
-            data-carousel-card
-            class="shrink-0 basis-full snap-start lg:basis-[calc(50%-1rem)]"
-            data-reveal
-          >
-            <div class="aspect-[4/3] overflow-hidden bg-beige">
-              <img
-                src={item.image}
-                alt={`Réalisation — ${item.title}`}
-                loading="lazy"
-                width="1600"
-                height="1200"
-                class="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105"
-              />
-            </div>
-            <div class="mt-4 flex items-baseline justify-between">
-              <p class="font-serif text-lg font-normal">{item.title}</p>
-              <span class="text-xs tracking-[0.2em] text-anthracite/50 uppercase">
-                {item.category}
-              </span>
-            </div>
-          </div>
-        ))
+        realisations.map((item) => {
+          const Tag = item.projectId ? "a" : "div";
+          const linkProps = item.projectId ? { href: `/projets/${item.projectId}` } : {};
+          return (
+            <Tag
+              data-carousel-card
+              class="group shrink-0 basis-full snap-start lg:basis-[calc(50%-1rem)]"
+              data-reveal
+              {...linkProps}
+            >
+              <div class="aspect-[4/3] overflow-hidden bg-beige">
+                <img
+                  src={item.image}
+                  alt={`Réalisation — ${item.title}`}
+                  loading="lazy"
+                  width="1600"
+                  height="1200"
+                  class="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                />
+              </div>
+              <div class="mt-4 flex items-baseline justify-between">
+                <p class="font-serif text-lg font-normal">{item.title}</p>
+                <span class="text-xs tracking-[0.2em] text-anthracite/50 uppercase">
+                  {item.category}
+                </span>
+              </div>
+            </Tag>
+          );
+        })
       }
     </div>
 

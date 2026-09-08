@@ -1,8 +1,8 @@
-// Placeholders Unsplash — la référence (tahiti-design-haven.lovable.app)
-// réutilise les mêmes visuels génériques d'une carte à l'autre (stock du
-// précédent prestataire, pas de vraies photos de projets). On ne les
-// récupère donc pas : ces images restent à remplacer par les vraies photos
-// une fois reçues de la cliente.
+// Texte réel repris du site officiel de la cliente
+// (interieurdesigntahiti.com). Images en placeholders Unsplash — la
+// référence de mise en page réutilise elle-même des visuels génériques
+// d'une carte à l'autre (stock du précédent prestataire, pas de vraies
+// photos de projets), à remplacer par les vraies photos une fois reçues.
 const u = (id) =>
   `https://images.unsplash.com/photo-${id}?w=1200&h=900&q=80&auto=format&fit=crop`;
 
@@ -10,64 +10,57 @@ export const services = [
   {
     number: "01",
     title: "Consultation projet",
-    description:
-      "Une consultation à l'agence pour définir votre projet, suivie d'une visite de terrain pour garantir une réalisation conforme à vos attentes.",
+    description: "Consultation pour définir votre projet & prise de côtes sur site.",
     image: u("1611048267451-e6ed903d4a38"),
   },
   {
     number: "02",
     title: "Conseils à domicile",
     description:
-      "Un service personnalisé d'environ 2 heures chez vous pour vous conseiller dans la transformation de vos espaces selon vos goûts et besoins.",
+      "Service de conseils à domicile, environ 2 heures, pour vous accompagner dans la transformation de vos espaces.",
     image: u("1704040686510-b747ff423ebb"),
   },
   {
     number: "03",
     title: "Optimisation en plan",
-    description:
-      "Une réflexion approfondie en plans 2D détaillés et précis, dans une approche personnalisée pour optimiser l'aménagement de vos espaces.",
+    description: "Optimisation de vos espaces : propositions en plan 2D détaillées et précises.",
     image: u("1598928506311-c55ded91a20c"),
   },
   {
     number: "04",
     title: "Projection 3D",
     description:
-      "Création de vos espaces en 3D avec visuels photoréalistes sous forme de book ou vidéo immersive pour vous projeter dans vos futurs lieux.",
+      "Projection dans vos futurs espaces : book photo ou vidéo 3D en visuels photoréalistes.",
     image: u("1704040686413-2c607dbd2f06"),
   },
   {
     number: "05",
     title: "Budgétisation",
-    description:
-      "Budgétisation détaillée de votre projet par lot et sélection des artisans pour une gestion efficace et une réalisation de qualité.",
+    description: "Budgétisation détaillée de votre projet par lot & sélection des artisans.",
     image: u("1634822929277-0c51ca0e8846"),
   },
   {
     number: "06",
     title: "Mobiliers sur mesure",
-    description:
-      "Conception et fabrication de mobiliers sur mesure, solutions uniques adaptées à vos espaces. Fabrication locale ou internationale.",
+    description: "Fabrication de mobiliers sur mesure & plans techniques.",
     image: u("1621261027519-a71ac66d5a68"),
   },
   {
     number: "07",
     title: "Sourcing décoration",
-    description:
-      "Sélection de mobiliers et objets de décoration uniques auprès de fournisseurs variés, pour une finition harmonieuse de vos intérieurs.",
+    description: "Sourcing de mobiliers & décoration, gestion des commandes.",
     image: u("1630905119003-329447458f85"),
   },
   {
     number: "08",
     title: "Gestion des permis",
-    description:
-      "Prise en charge des démarches administratives nécessaires à l'obtention des autorisations requises pour votre projet.",
+    description: "Gestion administrative des permis nécessaires à votre projet.",
     image: u("1757924461488-ef9ad0670978"),
   },
   {
     number: "09",
     title: "Pilotage de chantier",
-    description:
-      "Suivi professionnel tout au long du chantier, dans le respect des délais et budgets convenus ensemble.",
+    description: "Supervision & pilotage de chantier de A à Z.",
     image: u("1660599197052-c610e8a15c9e"),
   },
 ];

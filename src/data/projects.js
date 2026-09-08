@@ -107,6 +107,43 @@ export const projects = [
     ],
   },
   {
+    // Vrai projet, texte et photo repris du site officiel de la cliente
+    // (interieurdesigntahiti.com/projet-niu-beach-hotel-moorea) — photo web
+    // en attendant les fichiers HD originaux.
+    id: "niu-beach-hotel-moorea",
+    title: "Niu Beach Hôtel Moorea",
+    subtitle: "Réception d'hôtel, Moorea.",
+    category: "hotels",
+    location: "Moorea",
+    year: "2023",
+    surface: "100 m²",
+    mission: "Aménagement intérieur et décoration d'une réception d'hôtel",
+    description:
+      "Un style tropical minimaliste et épuré, reflétant une ambiance naturelle par le jeu des textures, des fibres, des couleurs chaudes et de la pureté du blanc. Le concept s'inspire du « NIU » (cocotier), avec des graphismes polynésiens symbolisant la paix et l'accueil — modernité et éléments naturels combinés pour un environnement élégant et relaxant, adapté au cadre paradisiaque de Moorea.",
+    cover: "/images/niu-beach-hotel-moorea/cover.jpg",
+    images: ["/images/niu-beach-hotel-moorea/cover.jpg"],
+    imageDims: [[1024, 768]],
+  },
+  {
+    // Vrai projet, texte et photo repris du site officiel de la cliente
+    // (interieurdesigntahiti.com/projet-maison-individuelle) — une photo
+    // représentative choisie dans la galerie de 19, en attendant les
+    // fichiers HD originaux.
+    id: "maison-individuelle",
+    title: "Maison Individuelle",
+    subtitle: "Résidence contemporaine, Punaauia.",
+    category: "residentiel",
+    location: "Punaauia",
+    year: "2020",
+    surface: "250 m²",
+    mission: "Aménagement intérieur et décoration d'une maison individuelle",
+    description:
+      "Une oasis de modernité et de fraîcheur tropicale, où chaque détail est pensé pour évoquer un sentiment de sérénité et d'évasion — l'harmonie parfaite entre design contemporain et influences tropicales.",
+    cover: "/images/maison-individuelle/cover.jpg",
+    images: ["/images/maison-individuelle/cover.jpg"],
+    imageDims: [[1600, 1200]],
+  },
+  {
     id: "villa-tefana",
     title: "Villa Tefana",
     subtitle: "Résidence privée face au lagon.",

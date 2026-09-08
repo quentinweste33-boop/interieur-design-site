@@ -1,18 +1,22 @@
 // Placeholders Unsplash (voir note dans services.js) — à remplacer par de
-// vraies photos de réalisations une fois reçues de la cliente.
+// vraies photos de réalisations une fois reçues de la cliente. Deux entrées
+// (Niu Beach Hôtel Moorea, Maison Individuelle) sont déjà de vrais projets
+// — voir data/projects.js — et pointent vers leur fiche via projectId.
 const u = (id) =>
   `https://images.unsplash.com/photo-${id}?w=1600&h=1200&q=80&auto=format&fit=crop`;
 
 export const realisations = [
   {
-    title: "Séjour contemporain",
-    category: "Résidentiel",
-    image: u("1758193783649-13371d7fb8dd"),
+    title: "Maison Individuelle",
+    category: "Résidentiels",
+    image: "/images/maison-individuelle/cover.jpg",
+    projectId: "maison-individuelle",
   },
   {
-    title: "Rénovation complète",
-    category: "Maison",
-    image: u("1758714919725-d2740fc99f14"),
+    title: "Niu Beach Hôtel Moorea",
+    category: "Hôtels",
+    image: "/images/niu-beach-hotel-moorea/cover.jpg",
+    projectId: "niu-beach-hotel-moorea",
   },
   {
     title: "Mobilier sur mesure",

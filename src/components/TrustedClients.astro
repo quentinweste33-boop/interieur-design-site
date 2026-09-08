@@ -1,0 +1,45 @@
+---
+// Pas de fichiers logo réels disponibles pour l'instant : typographie
+// stylisée uniquement (voir Marquee.astro pour le même principe de bandeau
+// défilant, appliqué ici aux clients plutôt qu'aux mots-clés du métier).
+const clients = [
+  "Le Tahiti by Pearl Resorts",
+  "NIU Beach Hôtel Moorea",
+  "Kaloo",
+  "Nespresso",
+  "OPT",
+  "EDT-ENGIE",
+  "Café Maeva",
+  "L'Ivresse Tahiti",
+  "Millesime",
+  "Fare du Café",
+  "Sully",
+  "Onati",
+];
+---
+
+<section class="border-y border-pierre/40 bg-beige/40 py-16">
+  <p class="mb-8 text-center text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>
+    Ils nous ont fait confiance
+  </p>
+  <div class="overflow-hidden">
+    <div class="marquee-track flex w-max shrink-0 whitespace-nowrap">
+      {
+        Array.from({ length: 2 }).map(() => (
+          <span class="flex shrink-0 items-center gap-10 pr-10">
+            {clients.map((client) => (
+              <>
+                <span class="text-sm tracking-[0.25em] text-anthracite/60 uppercase">
+                  {client}
+                </span>
+                <span aria-hidden="true" class="text-bronze">
+                  ·
+                </span>
+              </>
+            ))}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>
