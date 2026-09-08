@@ -1,0 +1,55 @@
+---
+// Galerie éditoriale grand format (esprit lauragonzalez.fr/le-studio) :
+// alternance image plein cadre / bloc de texte narratif, gauche-droite puis
+// inversé. Gabarit réutilisable — voir getGallerySections() dans
+// data/projects.js pour le contenu par défaut des projets sans données
+// dédiées (placeholders en attendant les vraies photos).
+interface Entry {
+  image: string;
+  width: number;
+  height: number;
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  entries: Entry[];
+  projectTitle: string;
+}
+
+const { entries, projectTitle } = Astro.props;
+---
+
+<div class="space-y-24 md:space-y-32">
+  {
+    entries.map((entry, i) => {
+      const reversed = i % 2 === 1;
+      return (
+        <div class="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-20">
+          <div class={reversed ? "md:order-2" : ""} data-reveal>
+            <div class="aspect-[4/5] overflow-hidden bg-beige">
+              <img
+                src={entry.image}
+                alt={`${entry.title} — ${projectTitle}`}
+                loading="lazy"
+                width={entry.width}
+                height={entry.height}
+                class="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <div class={reversed ? "md:order-1" : ""} data-reveal>
+            <p class="text-xs tracking-[0.35em] text-bronze uppercase">{entry.eyebrow}</p>
+            <h3 class="mt-4 font-serif text-3xl leading-tight font-normal md:text-4xl">
+              {entry.title}
+            </h3>
+            <p class="mt-6 font-serif text-xl leading-relaxed text-anthracite/80 italic md:text-2xl">
+              {entry.description}
+            </p>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { categories, projects, PSWP_WIDTH, PSWP_HEIGHT } from "../../data/projects";
+import ProjectStoryGallery from "../../components/ProjectStoryGallery.astro";
+import { categories, projects, getGallerySections } from "../../data/projects";
 
 export async function getStaticPaths() {
   return projects.map((project) => ({
@@ -21,9 +22,7 @@ const meta = [
   { label: "Lieu", value: project.location },
 ];
 
-// Certains projets (photos réelles) ont des dimensions propres à chaque
-// image ; les autres (placeholders Unsplash) utilisent le format standard.
-const dims = (i) => project.imageDims?.[i] ?? [PSWP_WIDTH, PSWP_HEIGHT];
+const gallerySections = getGallerySections(project);
 ---
 
 <BaseLayout
@@ -57,60 +56,6 @@ const dims = (i) => project.imageDims?.[i] ?? [PSWP_WIDTH, PSWP_HEIGHT];
       </div>
     </div>
 
-    <div
-      class="pswp-gallery mt-14 grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 md:h-[640px] md:gap-6"
-      data-reveal
-    >
-      <a
-        href={project.images[0]}
-        data-pswp-width={dims(0)[0]}
-        data-pswp-height={dims(0)[1]}
-        class="block aspect-[4/3] overflow-hidden bg-beige md:col-span-2 md:row-span-2 md:aspect-auto md:h-full"
-        aria-label={`Agrandir l'image 1 — ${project.title}`}
-      >
-        <img
-          src={project.images[0]}
-          alt={`Intérieur du projet ${project.title} — vue principale, ${project.location}`}
-          loading="lazy"
-          width={dims(0)[0]}
-          height={dims(0)[1]}
-          class="h-full w-full object-cover"
-        />
-      </a>
-      <a
-        href={project.images[1]}
-        data-pswp-width={dims(1)[0]}
-        data-pswp-height={dims(1)[1]}
-        class="block aspect-[4/3] overflow-hidden bg-beige md:aspect-auto md:h-full"
-        aria-label={`Agrandir l'image 2 — ${project.title}`}
-      >
-        <img
-          src={project.images[1]}
-          alt={`Intérieur du projet ${project.title} — vue secondaire, ${project.location}`}
-          loading="lazy"
-          width={dims(1)[0]}
-          height={dims(1)[1]}
-          class="h-full w-full object-cover"
-        />
-      </a>
-      <a
-        href={project.images[2]}
-        data-pswp-width={dims(2)[0]}
-        data-pswp-height={dims(2)[1]}
-        class="block aspect-[4/3] overflow-hidden bg-beige md:aspect-auto md:h-full"
-        aria-label={`Agrandir l'image 3 — ${project.title}`}
-      >
-        <img
-          src={project.images[2]}
-          alt={`Intérieur du projet ${project.title} — détail, ${project.location}`}
-          loading="lazy"
-          width={dims(2)[0]}
-          height={dims(2)[1]}
-          class="h-full w-full object-cover"
-        />
-      </a>
-    </div>
-
     <p class="mt-14 max-w-2xl leading-relaxed text-anthracite/80" data-reveal>
       {project.description}
     </p>
@@ -126,39 +71,8 @@ const dims = (i) => project.imageDims?.[i] ?? [PSWP_WIDTH, PSWP_HEIGHT];
       }
     </div>
 
-    {project.extraImages?.length > 0 && (
-      <div class="mt-20 border-t border-pierre/40 pt-14">
-        <p class="mb-6 text-xs tracking-[0.2em] text-anthracite/50 uppercase" data-reveal>
-          Galerie complémentaire
-        </p>
-        <div class="pswp-gallery grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
-          {project.extraImages.map((extra, i) => (
-            <a
-              href={extra.src}
-              data-pswp-width={extra.width}
-              data-pswp-height={extra.height}
-              class="block"
-              aria-label={`Agrandir — ${extra.caption}`}
-            >
-              <div class="aspect-[3/4] overflow-hidden bg-beige">
-                <img
-                  src={extra.src}
-                  alt={`${extra.caption} — projet ${project.title}, ${project.location}`}
-                  loading="lazy"
-                  width={extra.width}
-                  height={extra.height}
-                  class="h-full w-full object-cover"
-                />
-              </div>
-              <p class="mt-3 text-sm text-anthracite/70">{extra.caption}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    )}
+    <div class="mt-24 border-t border-pierre/40 pt-20 md:mt-32 md:pt-24">
+      <ProjectStoryGallery entries={gallerySections} projectTitle={project.title} />
+    </div>
   </section>
 </BaseLayout>
-
-<script>
-  import "../../scripts/lightbox.js";
-</script>

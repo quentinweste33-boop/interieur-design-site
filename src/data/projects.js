@@ -40,10 +40,14 @@ export const projects = [
     title: "Sofitel Kia Ora",
     subtitle: "Moorea Beach Resort.",
     category: "hotels",
+    // Libellé de secteur + note pour le bloc infos (distinct du libellé de
+    // filtre "Hôtels" utilisé ailleurs sur le site).
+    sector: "Hôtellerie",
+    rating: "5★",
     location: "Moorea",
     year: "2023",
     surface: "980 m²",
-    mission: "Rénovation & aménagement complet",
+    mission: "Architecture intérieure & aménagement",
     description:
       "Une réinterprétation contemporaine de l'art de recevoir à la polynésienne. Espaces de vie ouverts sur le jardin, mobilier sur-mesure et palette de matières naturelles pour un accueil sobre et chaleureux.",
     // Vraies photos fournies par la cliente (les autres projets restent en
@@ -55,18 +59,50 @@ export const projects = [
       "/images/sofitel-kia-ora/breakfast.jpg",
     ],
     // Dimensions réelles (photos non recadrées au format PSWP_WIDTH/HEIGHT
-    // standard) — nécessaires pour un zoom PhotoSwipe correctement cadré.
+    // standard) — nécessaires pour un rendu correctement cadré.
     imageDims: [
       [2000, 1500],
       [1200, 1600],
       [1200, 1600],
     ],
-    extraImages: [
+    // Galerie éditoriale grand format (page de détail) — les 4 vraies photos,
+    // chacune avec son texte immersif.
+    gallerySections: [
       {
-        src: "/images/sofitel-kia-ora/bathroom.jpg",
-        caption: "Espace bien-être",
+        image: "/images/sofitel-kia-ora/pool.jpg",
+        width: 2000,
+        height: 1500,
+        eyebrow: "Le patio",
+        title: "Face au lagon",
+        description:
+          "Ici, la piscine à débordement se fond dans la ligne d'horizon du lagon. Les parasols orangés ponctuent le bois patiné de la terrasse, entre ombre et lumière, dans un dialogue permanent avec le végétal environnant.",
+      },
+      {
+        image: "/images/sofitel-kia-ora/lounge.jpg",
         width: 1200,
         height: 1600,
+        eyebrow: "Le restaurant",
+        title: "Sous les fibres tressées",
+        description:
+          "Le plafond en fibres tressées suspend une pluie de lumière dorée sur la salle. Mobilier en rotin et bois brut composent une atmosphère à la fois raffinée et profondément ancrée dans l'artisanat polynésien.",
+      },
+      {
+        image: "/images/sofitel-kia-ora/breakfast.jpg",
+        width: 1200,
+        height: 1600,
+        eyebrow: "L'art de la table",
+        title: "Le rituel du matin",
+        description:
+          "Fruits de saison, fleurs tropicales fraîchement coupées et vaisselle épurée composent une nature morte quotidienne — un moment suspendu avant que la journée ne commence.",
+      },
+      {
+        image: "/images/sofitel-kia-ora/bathroom.jpg",
+        width: 1200,
+        height: 1600,
+        eyebrow: "L'espace bien-être",
+        title: "Le rituel de l'eau",
+        description:
+          "Les vasques vert sauge se détachent sur la mosaïque graphique, entre bois et pierre claire. Un espace pensé comme une parenthèse sensorielle, loin de l'agitation du monde extérieur.",
       },
     ],
   },
@@ -220,3 +256,25 @@ export const featuredProject = projects.find((p) => p.id === "hotel-manava");
 
 export const heroPoster = "/images/hero-poster.jpg";
 export const founderPortrait = u("1581065178047-8ee15951ede6", 1200, 1500);
+
+// Gabarit de secours pour la galerie éditoriale (ProjectStoryGallery) : les
+// projets sans gallerySections dédiée (tous sauf Sofitel Kia Ora pour
+// l'instant) réutilisent leurs 3 images + leur description existante,
+// avec des intitulés de zone génériques.
+const DEFAULT_ZONE_LABELS = ["Vue d'ensemble", "Ambiance", "Détail"];
+
+export function getGallerySections(project) {
+  if (project.gallerySections) return project.gallerySections;
+
+  return project.images.map((image, i) => {
+    const [width, height] = project.imageDims?.[i] ?? [PSWP_WIDTH, PSWP_HEIGHT];
+    return {
+      image,
+      width,
+      height,
+      eyebrow: DEFAULT_ZONE_LABELS[i] ?? `Vue ${i + 1}`,
+      title: project.title,
+      description: project.description,
+    };
+  });
+}

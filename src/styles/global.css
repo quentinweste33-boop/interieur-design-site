@@ -7,8 +7,6 @@
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
 
-@import "photoswipe/style.css";
-
 @theme {
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", -apple-system, sans-serif;
@@ -60,13 +58,8 @@ html.lenis body {
   transform: translateY(28px);
 }
 
-/* PhotoSwipe restyle to match the editorial palette */
-.pswp {
-  --pswp-bg: #16140f;
-}
-
 /* Visible focus ring for keyboard navigation (header, filtres, formulaire,
-   déclencheurs de la galerie PhotoSwipe). */
+   cartes de projets, carrousels). */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
