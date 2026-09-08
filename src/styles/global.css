@@ -16,10 +16,10 @@
   --color-pierre: #c9bfaf;
   --color-anthracite: #2a2724;
   --color-bronze: #9c8a6e;
-  /* Accent ciblé (charte graphique réelle Interieur Design, valeur mesurée
-     sur la maquette de référence du précédent prestataire) : à utiliser avec
-     parcimonie — icône du logo, sous-titres en italique — jamais en aplat. */
-  --color-sauge: #6a8770;
+  /* Accent ciblé, valeur mesurée directement sur le vrai fichier logo de la
+     cliente (échantillonnage pixel) : à utiliser avec parcimonie — icône du
+     logo, sous-titres en italique — jamais en aplat. */
+  --color-sauge: #6d917b;
 }
 
 html {

@@ -292,7 +292,8 @@ export const projects = [
 export const featuredProject = projects.find((p) => p.id === "hotel-manava");
 
 export const heroPoster = "/images/hero-poster.jpg";
-export const founderPortrait = u("1581065178047-8ee15951ede6", 1200, 1500);
+// Vraie photo de Nathalie Weste fournie par la cliente.
+export const founderPortrait = "/images/nathalie-weste.jpg";
 
 // Gabarit de secours pour la galerie éditoriale (ProjectStoryGallery) : les
 // projets sans gallerySections dédiée (tous sauf Sofitel Kia Ora pour

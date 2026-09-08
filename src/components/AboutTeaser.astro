@@ -1,0 +1,40 @@
+---
+import { about } from "../data/about";
+---
+
+<section class="mx-auto max-w-[1400px] px-6 py-28 md:px-10">
+  <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-20">
+    <div class="relative" data-reveal>
+      <div class="aspect-[4/5] overflow-hidden bg-beige">
+        <img
+          src={about.photo}
+          alt={`Portrait de ${about.photoCaption}`}
+          loading="lazy"
+          width="1200"
+          height="1800"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <p
+        class="absolute bottom-6 left-6 bg-anthracite/70 px-4 py-2 text-xs tracking-[0.2em] text-ivoire uppercase backdrop-blur-sm"
+      >
+        {about.photoCaption}
+      </p>
+    </div>
+
+    <div data-reveal>
+      <p class="mb-4 text-xs tracking-[0.35em] text-bronze uppercase">{about.eyebrow}</p>
+      <h2 class="max-w-md font-serif text-4xl leading-tight font-normal md:text-5xl">
+        {about.title}
+      </h2>
+      <p class="mt-2 font-serif text-2xl text-sauge italic">{about.subtitle}</p>
+      <p class="mt-6 max-w-md leading-relaxed text-anthracite/80">{about.paragraphs[0]}</p>
+      <a
+        href="/a-propos"
+        class="mt-8 inline-block border border-anthracite px-8 py-3 text-xs tracking-[0.2em] uppercase transition-colors hover:bg-anthracite hover:text-ivoire"
+      >
+        En savoir plus
+      </a>
+    </div>
+  </div>
+</section>

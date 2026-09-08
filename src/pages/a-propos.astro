@@ -1,36 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { founderPortrait } from "../data/projects";
+import { about } from "../data/about";
 import ServicesCarousel from "../components/ServicesCarousel.astro";
 ---
 
 <BaseLayout
   title="À propos"
-  description="Intérieur Design Tahiti, agence d'architecture d'intérieur au cœur de Papeete, conçoit des espaces intérieurs exceptionnels inspirés de la culture et des matériaux naturels polynésiens."
-  ogImage={founderPortrait}
+  description="Nathalie Weste, fondatrice d'Interieur Design Tahiti, accompagne depuis plus de 17 ans particuliers et professionnels dans leurs projets d'aménagement, de rénovation et de décoration intérieure en Polynésie française."
+  ogImage={about.photo}
 >
   <section class="grid grid-cols-1 md:grid-cols-2">
     <div class="order-2 flex items-center px-6 py-20 md:order-1 md:px-16 md:py-0">
       <div class="max-w-lg">
         <p class="mb-4 text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>
-          À propos
+          {about.eyebrow}
         </p>
-        <h1 class="mb-8 font-serif text-4xl leading-tight font-normal md:text-5xl" data-reveal>
-          Création, élégance & personnalisation.
+        <h1 class="font-serif text-4xl leading-tight font-normal md:text-5xl" data-reveal>
+          {about.title}
         </h1>
+        <p class="mt-2 mb-8 font-serif text-2xl text-sauge italic" data-reveal>
+          {about.subtitle}
+        </p>
 
         <div class="space-y-5 leading-relaxed text-anthracite/80" data-reveal>
-          <p>
-            Intérieur Design Tahiti est une agence de renommée située au cœur de
-            Papeete, spécialisée dans la conception et la réalisation d'espaces
-            intérieurs exceptionnels. Notre équipe d'architectes d'intérieur
-            talentueux et expérimentés s'engage à transformer vos idées en
-            réalité, en créant des environnements harmonieux et fonctionnels qui
-            reflètent votre style et vos besoins uniques. Forts de notre
-            connaissance approfondie de la culture et du mode de vie polynésiens,
-            nous intégrons des éléments locaux et des matériaux naturels pour
-            concevoir des espaces authentiques et inspirants.
-          </p>
+          {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
         </div>
 
         <blockquote class="mt-10 border-t border-pierre/40 pt-8" data-reveal>
@@ -51,14 +44,19 @@ import ServicesCarousel from "../components/ServicesCarousel.astro";
       </div>
     </div>
 
-    <div class="order-1 h-[60vh] md:order-2 md:h-screen">
+    <div class="relative order-1 h-[60vh] md:order-2 md:h-screen">
       <img
-        src={founderPortrait}
-        alt="Portrait de Nath, fondatrice d'Interieur Design"
+        src={about.photo}
+        alt={`Portrait de ${about.photoCaption}`}
         class="h-full w-full object-cover"
         width="1200"
-        height="1500"
+        height="1800"
       />
+      <p
+        class="absolute bottom-8 left-8 bg-anthracite/70 px-4 py-2 text-xs tracking-[0.2em] text-ivoire uppercase backdrop-blur-sm"
+      >
+        {about.photoCaption}
+      </p>
     </div>
   </section>
 

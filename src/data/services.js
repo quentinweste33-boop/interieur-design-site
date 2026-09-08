@@ -11,7 +11,8 @@ export const services = [
     number: "01",
     title: "Consultation projet",
     description: "Consultation pour définir votre projet & prise de côtes sur site.",
-    image: u("1611048267451-e6ed903d4a38"),
+    // Vraie photo fournie par la cliente.
+    image: "/images/services/consultation-projet.jpg",
   },
   {
     number: "02",
@@ -24,7 +25,11 @@ export const services = [
     number: "03",
     title: "Optimisation en plan",
     description: "Optimisation de vos espaces : propositions en plan 2D détaillées et précises.",
-    image: u("1598928506311-c55ded91a20c"),
+    // Vrai plan 2D fourni par la cliente (document technique, cotations) —
+    // affiché en entier (object-contain) plutôt que recadré, pour ne pas
+    // couper les cotations.
+    image: "/images/services/optimisation-en-plan.png",
+    imageFit: "contain",
   },
   {
     number: "04",
