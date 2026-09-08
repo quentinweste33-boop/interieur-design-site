@@ -1,5 +1,7 @@
 // Assets placeholder (Unsplash) — a remplacer par les vraies photos des projets
-// une fois recues.
+// une fois recues. Les champs subtitle/surface/mission/description sont eux
+// aussi provisoires (fiche projet, section "Projet phare") en attendant le
+// contenu definitif de la cliente.
 export const PSWP_WIDTH = 1600;
 export const PSWP_HEIGHT = 1067;
 
@@ -18,9 +20,14 @@ export const projects = [
   {
     id: "hotel-le-corail",
     title: "Hôtel Le Corail",
+    subtitle: "Bora Bora Lagoon Resort.",
     category: "hotels",
     location: "Bora Bora",
     year: "2024",
+    surface: "1 200 m²",
+    mission: "Architecture intérieure & aménagement",
+    description:
+      "Une réinterprétation contemporaine de l'hôtellerie polynésienne : matières brutes, lumière naturelle et vues sur le lagon dictent chaque choix d'aménagement, des espaces communs aux suites.",
     cover: u("1758193783649-13371d7fb8dd"),
     images: [
       u("1758193783649-13371d7fb8dd"),
@@ -30,23 +37,50 @@ export const projects = [
   },
   {
     id: "hotel-manava",
-    title: "Hôtel Manava",
+    title: "Sofitel Kia Ora",
+    subtitle: "Moorea Beach Resort.",
     category: "hotels",
     location: "Moorea",
     year: "2023",
-    cover: u("1758714919725-d2740fc99f14"),
+    surface: "980 m²",
+    mission: "Rénovation & aménagement complet",
+    description:
+      "Une réinterprétation contemporaine de l'art de recevoir à la polynésienne. Espaces de vie ouverts sur le jardin, mobilier sur-mesure et palette de matières naturelles pour un accueil sobre et chaleureux.",
+    // Vraies photos fournies par la cliente (les autres projets restent en
+    // placeholder Unsplash pour l'instant).
+    cover: "/images/sofitel-kia-ora/pool.jpg",
     images: [
-      u("1758714919725-d2740fc99f14"),
-      u("1775866914943-ba1415a35afc"),
-      u("1781962479780-b910226837a3"),
+      "/images/sofitel-kia-ora/pool.jpg",
+      "/images/sofitel-kia-ora/lounge.jpg",
+      "/images/sofitel-kia-ora/breakfast.jpg",
+    ],
+    // Dimensions réelles (photos non recadrées au format PSWP_WIDTH/HEIGHT
+    // standard) — nécessaires pour un zoom PhotoSwipe correctement cadré.
+    imageDims: [
+      [2000, 1500],
+      [1200, 1600],
+      [1200, 1600],
+    ],
+    extraImages: [
+      {
+        src: "/images/sofitel-kia-ora/bathroom.jpg",
+        caption: "Espace bien-être",
+        width: 1200,
+        height: 1600,
+      },
     ],
   },
   {
     id: "villa-tefana",
     title: "Villa Tefana",
+    subtitle: "Résidence privée face au lagon.",
     category: "residentiel",
     location: "Punaauia",
     year: "2024",
+    surface: "320 m²",
+    mission: "Architecture intérieure & décoration",
+    description:
+      "Une résidence familiale pensée comme un prolongement du paysage : grandes ouvertures sur le lagon, matériaux locaux et lignes épurées pour une vie intérieure-extérieure permanente.",
     cover: u("1611048267451-e6ed903d4a38"),
     images: [
       u("1611048267451-e6ed903d4a38"),
@@ -57,9 +91,14 @@ export const projects = [
   {
     id: "residence-vaima",
     title: "Résidence Vaima",
+    subtitle: "Appartement contemporain.",
     category: "residentiel",
     location: "Papeete",
     year: "2023",
+    surface: "145 m²",
+    mission: "Rénovation & décoration",
+    description:
+      "Refonte complète d'un appartement urbain : optimisation des volumes, palette sobre et matières chaleureuses pour un intérieur contemporain et lumineux au cœur de Papeete.",
     cover: u("1757924461488-ef9ad0670978"),
     images: [
       u("1757924461488-ef9ad0670978"),
@@ -70,9 +109,14 @@ export const projects = [
   {
     id: "boutique-heiva",
     title: "Boutique Heiva",
+    subtitle: "Concept store, centre-ville.",
     category: "retail",
     location: "Papeete",
     year: "2024",
+    surface: "85 m²",
+    mission: "Agencement & scénographie commerciale",
+    description:
+      "Un espace de vente pensé comme une scénographie : parcours client fluide, mobilier modulaire et mise en lumière des produits pour une expérience d'achat immersive.",
     cover: u("1441986300917-64674bd600d8"),
     images: [
       u("1441986300917-64674bd600d8"),
@@ -83,9 +127,14 @@ export const projects = [
   {
     id: "concept-store-marara",
     title: "Concept Store Marara",
+    subtitle: "Boutique atelier, Fare Ute.",
     category: "retail",
     location: "Fare Ute",
     year: "2023",
+    surface: "110 m²",
+    mission: "Agencement & mobilier sur-mesure",
+    description:
+      "Une ancienne halle transformée en boutique-atelier : structures métalliques conservées, mobilier sur-mesure et éclairage travaillé pour révéler le caractère brut du lieu.",
     cover: u("1660599197052-c610e8a15c9e"),
     images: [
       u("1660599197052-c610e8a15c9e"),
@@ -96,9 +145,14 @@ export const projects = [
   {
     id: "restaurant-la-perle",
     title: "Restaurant La Perle",
+    subtitle: "Table gastronomique, bord de mer.",
     category: "restaurant",
     location: "Papeete",
     year: "2024",
+    surface: "210 m²",
+    mission: "Architecture intérieure & scénographie",
+    description:
+      "Une salle pensée comme un écrin : bois patiné, laiton et éclairage tamisé composent une atmosphère intime, en résonance avec une cuisine tournée vers le lagon.",
     cover: u("1643101570532-88c8ecc07c1f"),
     images: [
       u("1643101570532-88c8ecc07c1f"),
@@ -109,9 +163,14 @@ export const projects = [
   {
     id: "table-de-nath",
     title: "La Table de Nath",
+    subtitle: "Bistrot contemporain, Punaauia.",
     category: "restaurant",
     location: "Punaauia",
     year: "2022",
+    surface: "140 m²",
+    mission: "Rénovation & agencement",
+    description:
+      "Un bistrot de quartier réinventé : banquettes sur-mesure, matières naturelles et une palette chaleureuse pour un lieu convivial ouvert à la vie du quartier.",
     cover: u("1583354608715-177553a4035e"),
     images: [
       u("1583354608715-177553a4035e"),
@@ -122,9 +181,14 @@ export const projects = [
   {
     id: "scenographie-heiva-i-tahiti",
     title: "Heiva i Tahiti — Scénographie",
+    subtitle: "Scénographie d'événement, Place Toata.",
     category: "scenographie",
     location: "Place Toata",
     year: "2024",
+    surface: "600 m²",
+    mission: "Scénographie & direction artistique",
+    description:
+      "Une scénographie éphémère pour l'un des plus grands événements culturels de Polynésie : structures modulaires, jeux de lumière et matières végétales au service du spectacle.",
     cover: u("1558970439-add78fc68990"),
     images: [
       u("1558970439-add78fc68990"),
@@ -135,9 +199,14 @@ export const projects = [
   {
     id: "scenographie-gala-annuel",
     title: "Gala Annuel — Scénographie",
+    subtitle: "Soirée de gala, Papeete.",
     category: "scenographie",
     location: "Papeete",
     year: "2023",
+    surface: "450 m²",
+    mission: "Scénographie & aménagement événementiel",
+    description:
+      "Une scénographie sur-mesure pour une soirée de gala : mobilier événementiel, éclairage scénique et parcours immersif conçus pour l'occasion.",
     cover: u("1576544403918-c47d52572a9a"),
     images: [
       u("1576544403918-c47d52572a9a"),
@@ -147,5 +216,7 @@ export const projects = [
   },
 ];
 
-export const heroPoster = u("1711873316332-acb6930211e1", 2400, 1350);
+export const featuredProject = projects.find((p) => p.id === "hotel-manava");
+
+export const heroPoster = "/images/hero-poster.jpg";
 export const founderPortrait = u("1581065178047-8ee15951ede6", 1200, 1500);

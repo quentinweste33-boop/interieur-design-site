@@ -10,7 +10,7 @@ function initCardParallax() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!supportsHover || reduceMotion) return;
 
-  document.querySelectorAll(".pswp-gallery").forEach((card) => {
+  document.querySelectorAll(".project-card").forEach((card) => {
     const target = card.querySelector("[data-parallax-card]");
     if (!target) return;
 

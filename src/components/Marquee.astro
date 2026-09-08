@@ -1,0 +1,28 @@
+---
+const keywords = [
+  "Aménagement",
+  "Rénovation",
+  "Construction",
+  "Relooking",
+  "Home staging",
+  "Décoration",
+  "Agencement",
+];
+---
+
+<div class="overflow-hidden border-y border-pierre/40 bg-beige/40 py-5">
+  <div class="marquee-track flex w-max shrink-0 whitespace-nowrap">
+    {
+      Array.from({ length: 2 }).map(() => (
+        <span class="flex shrink-0 items-center gap-4 pr-4 font-serif text-xl tracking-wide text-anthracite/70 md:text-2xl">
+          {keywords.map((word) => (
+            <>
+              <span>{word}</span>
+              <span aria-hidden="true" class="text-bronze">·</span>
+            </>
+          ))}
+        </span>
+      ))
+    }
+  </div>
+</div>

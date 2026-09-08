@@ -1,0 +1,48 @@
+---
+import { featuredProject } from "../data/projects";
+
+const meta = [
+  { label: "Surface", value: featuredProject.surface },
+  { label: "Mission", value: featuredProject.mission },
+  { label: "Année", value: featuredProject.year },
+  { label: "Lieu", value: featuredProject.location },
+];
+---
+
+<section class="mx-auto max-w-[1400px] px-6 py-28 md:px-10">
+  <p class="mb-4 text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>
+    Projet phare
+  </p>
+  <h2 class="max-w-2xl font-serif text-4xl leading-tight font-normal md:text-5xl" data-reveal>
+    {featuredProject.title}
+  </h2>
+  <p class="mt-3 font-serif text-2xl text-sauge italic" data-reveal>
+    {featuredProject.subtitle}
+  </p>
+
+  <div class="mt-6 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4" data-reveal>
+    {
+      meta.map((item) => (
+        <div>
+          <p class="text-[0.65rem] tracking-[0.2em] text-anthracite/50 uppercase">{item.label}</p>
+          <p class="mt-1 text-sm text-anthracite/80">{item.value}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <a
+    href={`/projets/${featuredProject.id}`}
+    class="mt-16 block aspect-[16/9] overflow-hidden bg-beige"
+    data-reveal
+  >
+    <img
+      src={featuredProject.cover}
+      alt={`Intérieur du projet ${featuredProject.title}, ${featuredProject.location}`}
+      loading="lazy"
+      width="1920"
+      height="1080"
+      class="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04]"
+    />
+  </a>
+</section>

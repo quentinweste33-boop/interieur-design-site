@@ -3,13 +3,23 @@ import { heroPoster } from "../data/projects";
 ---
 
 <section class="relative h-screen w-full overflow-hidden">
-  <!-- TODO: remplacer par la vraie vidéo hero de la cliente une fois confirmee.
-       En attendant, data-src pointe vers un fichier local absent : le poster
-       (image reelle verifiee) sert de fallback visuel, comme prevu au brief. -->
-  <video
+  <!-- Vraie vidéo hero (Sofitel Kia Ora, Moorea) fournie par la cliente,
+       ré-encodée en H.264 faststart. Deux qualités selon la largeur d'écran
+       (voir hero-video.js) ; le poster (frame extraite) reste visible en
+       dessous et la vidéo apparaît en fondu une fois la lecture démarrée,
+       pour éviter tout flash ou saut visuel. Mobile (<768px) ne charge
+       aucune vidéo, seul le poster s'affiche. -->
+  <img
+    src={heroPoster}
+    alt=""
+    aria-hidden="true"
     class="absolute inset-0 h-full w-full object-cover"
+  />
+  <video
+    class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
     data-hero-video
-    data-src="/videos/hero-placeholder.mp4"
+    data-src="/videos/hero.mp4"
+    data-src-lite="/videos/hero-lite.mp4"
     aria-hidden="true"
     autoplay
     muted
@@ -31,11 +41,18 @@ import { heroPoster } from "../data/projects";
   </div>
 
   <div class="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-    <p class="mb-5 text-xs tracking-[0.4em] text-ivoire/90 uppercase" data-reveal>
-      Architecture d'intérieur
+    <p
+      class="font-serif text-5xl leading-none font-normal tracking-[0.08em] text-ivoire uppercase md:text-[3.75rem]"
+      data-reveal
+    >
+      Interieur Design
     </p>
+    <p class="mt-3 text-xs tracking-[0.5em] text-ivoire/80 uppercase" data-reveal>
+      Tahiti
+    </p>
+
     <h1
-      class="max-w-3xl font-serif text-4xl leading-tight text-ivoire md:text-6xl"
+      class="mt-10 max-w-2xl font-serif text-2xl leading-snug font-normal text-ivoire/90 md:text-3xl"
       data-reveal
     >
       Des intérieurs sculptés par la lumière de la Polynésie
@@ -50,8 +67,10 @@ import { heroPoster } from "../data/projects";
   </div>
 
   <div
-    class="absolute bottom-8 left-1/2 z-10 h-12 w-px -translate-x-1/2 bg-ivoire/50"
+    class="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
   >
+    <span class="text-[0.65rem] tracking-[0.4em] text-ivoire/70 uppercase">Scroll</span>
+    <span class="h-10 w-px bg-ivoire/50"></span>
   </div>
 </section>
 
