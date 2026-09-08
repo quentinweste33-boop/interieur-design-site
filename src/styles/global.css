@@ -102,3 +102,13 @@ textarea:focus-visible {
     animation: none;
   }
 }
+
+/* Carrousels Services / Réalisations : la piste défile au doigt/trackpad,
+   seules les flèches restent visibles comme contrôle (pas de scrollbar). */
+.carousel-track {
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}

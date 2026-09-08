@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { founderPortrait } from "../data/projects";
+import ServicesCarousel from "../components/ServicesCarousel.astro";
 ---
 
 <BaseLayout
@@ -46,6 +47,14 @@ import { founderPortrait } from "../data/projects";
           </p>
         </div>
 
+        <blockquote class="mt-10 border-t border-pierre/40 pt-8" data-reveal>
+          <p class="font-serif text-2xl leading-snug italic md:text-3xl">
+            « Imaginer, révéler et transformer les lieux afin qu'ils deviennent
+            des espaces inspirants, alignés avec ceux qui les vivent — telle est
+            la philosophie d'Interieur Design Tahiti by Nathalie Weste. »
+          </p>
+        </blockquote>
+
         <a
           href="/contact"
           class="mt-10 inline-block border-b border-anthracite/40 pb-1 text-sm tracking-wide hover:border-anthracite"
@@ -66,4 +75,6 @@ import { founderPortrait } from "../data/projects";
       />
     </div>
   </section>
+
+  <ServicesCarousel />
 </BaseLayout>

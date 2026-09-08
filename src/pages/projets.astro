@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
+import RealisationsCarousel from "../components/RealisationsCarousel.astro";
 import { projects } from "../data/projects";
 ---
 
@@ -24,5 +25,9 @@ import { projects } from "../data/projects";
 
   <section class="mx-auto max-w-[1400px] px-6 pb-32 md:px-10">
     <ProjectGrid />
+  </section>
+
+  <section class="border-t border-pierre/40 bg-beige/40">
+    <RealisationsCarousel />
   </section>
 </BaseLayout>
