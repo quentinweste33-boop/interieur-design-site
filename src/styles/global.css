@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
-@import "@fontsource/cormorant-garamond/400.css";
-@import "@fontsource/cormorant-garamond/400-italic.css";
-@import "@fontsource/cormorant-garamond/500.css";
-@import "@fontsource/inter/300.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
+@import "@fontsource/tenor-sans/400.css";
+@import "@fontsource/bellota-text/300.css";
+@import "@fontsource/bellota-text/400.css";
+@import "@fontsource/bellota-text/700.css";
 
 @theme {
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Inter", -apple-system, sans-serif;
+  /* Charte graphique officielle Interieur Design Tahiti (02/2022). */
+  --font-serif: "Tenor Sans", Georgia, sans-serif; /* titres & sous-titres — une seule graisse */
+  --font-sans: "Bellota Text", -apple-system, sans-serif; /* corps de texte */
 
-  --color-ivoire: #f7f5f1;
+  --color-ivoire: #f3f3ec; /* Blanc Ivoire officiel */
   --color-beige: #ede6d8;
   --color-pierre: #c9bfaf;
   --color-anthracite: #2a2724;
+  /* Couleur d'accent non officielle, conservée hors charte pour les eyebrows
+     et petits libellés répétés — voir note de synthèse. */
   --color-bronze: #9c8a6e;
-  /* Accent ciblé, valeur mesurée directement sur le vrai fichier logo de la
-     cliente (échantillonnage pixel) : à utiliser avec parcimonie — icône du
-     logo, sous-titres en italique — jamais en aplat. */
-  --color-sauge: #6d917b;
+
+  --color-vert-sapin: #1c3e30; /* couleur PRINCIPALE — nav, boutons pleins, fonds foncés */
+  --color-sauge: #629279; /* couleur SECONDAIRE/accent — sous-titres, accroches, bordures */
+  --color-terre: #bb7c55; /* accent ponctuel — à utiliser avec parcimonie, jamais en masse */
 }
 
 html {

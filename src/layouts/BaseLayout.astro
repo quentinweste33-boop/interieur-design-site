@@ -2,7 +2,6 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
-import { heroPoster } from "../data/projects";
 import "../styles/global.css";
 
 interface Props {
@@ -15,7 +14,9 @@ interface Props {
 const {
   title,
   description = "Interieur Design — architecture d'intérieur haut de gamme en Polynésie française.",
-  ogImage = heroPoster,
+  // Icône de marque (charte graphique) par défaut ; les pages projet/À propos
+  // fournissent leur propre image contextuelle plus parlante pour le partage.
+  ogImage = "/images/og-default.png",
   overlayHeader = false,
 } = Astro.props;
 
@@ -29,8 +30,9 @@ const absoluteOgImage = new URL(ogImage, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <title>{pageTitle}</title>
@@ -54,7 +56,7 @@ const absoluteOgImage = new URL(ogImage, Astro.site);
   </head>
   <body class="overflow-x-hidden bg-ivoire text-anthracite">
     <Header overlay={overlayHeader} />
-    <main class:list={[!overlayHeader && "pt-24 md:pt-28"]} transition:animate="fade">
+    <main class:list={[!overlayHeader && "pt-28 md:pt-32"]} transition:animate="fade">
       <slot />
     </main>
     <Footer />

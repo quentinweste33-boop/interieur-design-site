@@ -25,14 +25,22 @@ const links = [
   ]}
 >
   <div class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 md:px-10">
-    <a href="/" class="flex items-center gap-3 font-serif text-lg tracking-[0.25em] uppercase">
-      <span
-        class="flex h-8 w-8 shrink-0 items-center justify-center border border-sauge/50 text-[0.65rem] tracking-normal text-sauge"
+    <a href="/" class="relative block h-14 w-[68px] shrink-0 md:h-16 md:w-[78px]">
+      <img
+        src="/logo/logo-couleur.png"
+        alt="Interieur Design Tahiti — accueil"
+        width="1024"
+        height="829"
+        class="logo-color absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-500"
+      />
+      <img
+        src="/logo/logo-blanc.png"
+        alt=""
         aria-hidden="true"
-      >
-        ID
-      </span>
-      Interieur Design
+        width="1024"
+        height="829"
+        class="logo-white absolute inset-0 h-full w-full object-contain object-left opacity-0 transition-opacity duration-500"
+      />
     </a>
 
     <nav class="hidden gap-10 text-[0.7rem] tracking-[0.2em] uppercase md:flex">
@@ -94,3 +102,17 @@ const links = [
 
   document.addEventListener("astro:page-load", initMobileMenu);
 </script>
+
+<style>
+  /* Logo blanc (fonds sombres : hero overlay) visible uniquement tant que le
+     header est transparent ; logo couleur dès qu'un fond clair apparaît
+     (scroll ou pages sans overlay) — réutilise l'état déjà géré par
+     header-scroll.js (attribut data-overlay + classe .is-scrolled). */
+  #site-header[data-overlay="true"]:not(.is-scrolled) .logo-white {
+    opacity: 1;
+  }
+
+  #site-header[data-overlay="true"]:not(.is-scrolled) .logo-color {
+    opacity: 0;
+  }
+</style>
