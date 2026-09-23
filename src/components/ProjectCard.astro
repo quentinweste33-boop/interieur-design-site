@@ -4,8 +4,8 @@ interface Props {
     id: string;
     title: string;
     category: string;
-    location: string;
-    year: string;
+    location?: string;
+    year?: string;
     cover: string;
     images: string[];
   };
@@ -13,6 +13,10 @@ interface Props {
 }
 
 const { project, categoryLabel } = Astro.props;
+
+// Lieu / année optionnels : on n'affiche que ce qui est renseigné.
+const details = [project.location, project.year].filter(Boolean).join(", ");
+const caption = details ? `${categoryLabel} — ${details}` : categoryLabel;
 ---
 
 <a
@@ -25,7 +29,7 @@ const { project, categoryLabel } = Astro.props;
     <div class="h-full w-full will-change-transform" data-parallax-card>
       <img
         src={project.cover}
-        alt={`Intérieur du projet ${project.title} — ${categoryLabel}, ${project.location}`}
+        alt={`Intérieur du projet ${project.title} — ${categoryLabel}${project.location ? `, ${project.location}` : ""}`}
         loading="lazy"
         width="1600"
         height="1067"
@@ -36,7 +40,7 @@ const { project, categoryLabel } = Astro.props;
   <div class="mt-4">
     <p class="font-serif text-lg font-normal">{project.title}</p>
     <p class="mt-1 text-xs tracking-[0.15em] text-anthracite/50 uppercase">
-      {categoryLabel} — {project.location}, {project.year}
+      {caption}
     </p>
   </div>
 </a>

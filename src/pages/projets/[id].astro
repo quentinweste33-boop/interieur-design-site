@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectStoryGallery from "../../components/ProjectStoryGallery.astro";
+import ProjectPhotoGallery from "../../components/ProjectPhotoGallery.astro";
 import { categories, projects, getGallerySections } from "../../data/projects";
 
 export async function getStaticPaths() {
@@ -15,14 +16,27 @@ const categoryLabel = Object.fromEntries(categories.map((c) => [c.slug, c.label]
   project.category
 ];
 
+// Surface / mission / année / lieu sont optionnels : un champ non renseigné
+// n'est jamais affiché (ni valeur inventée, ni cellule vide), et la grille
+// s'adapte au nombre de champs restants.
 const meta = [
   { label: "Surface", value: project.surface },
   { label: "Mission", value: project.mission },
   { label: "Année", value: project.year },
   { label: "Lieu", value: project.location },
-];
+].filter((item) => item.value);
 
-const gallerySections = getGallerySections(project);
+const metaColumns = {
+  1: "sm:grid-cols-1",
+  2: "sm:grid-cols-2",
+  3: "sm:grid-cols-3",
+  4: "sm:grid-cols-4",
+}[meta.length];
+
+// Texte de présentation : plusieurs paragraphes (body) ou un seul (description).
+const paragraphs = project.body ?? [project.description];
+
+const gallerySections = project.photos ? [] : getGallerySections(project);
 ---
 
 <BaseLayout
@@ -51,28 +65,41 @@ const gallerySections = getGallerySections(project);
         <p class="text-xs tracking-[0.2em] text-anthracite/50 uppercase">
           {categoryLabel}
         </p>
-        <p class="text-anthracite/70">{project.location}, Polynésie française</p>
-        <p class="text-anthracite/70">{project.mission}</p>
+        {project.location && (
+          <p class="text-anthracite/70">{project.location}, Polynésie française</p>
+        )}
+        {project.mission && <p class="text-anthracite/70">{project.mission}</p>}
       </div>
     </div>
 
-    <p class="mt-14 max-w-2xl leading-relaxed text-anthracite/80" data-reveal>
-      {project.description}
-    </p>
-
-    <div class="mt-14 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-pierre/40 pt-10 sm:grid-cols-4" data-reveal>
-      {
-        meta.map((item) => (
-          <div>
-            <p class="text-[0.65rem] tracking-[0.2em] text-anthracite/50 uppercase">{item.label}</p>
-            <p class="mt-1 text-sm text-anthracite/80">{item.value}</p>
-          </div>
-        ))
-      }
+    <div class="mt-14 max-w-2xl space-y-5 leading-relaxed text-anthracite/80" data-reveal>
+      {paragraphs.map((text) => <p>{text}</p>)}
     </div>
 
+    {
+      meta.length > 0 && (
+        <div
+          class={`mt-14 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-pierre/40 pt-10 ${metaColumns}`}
+          data-reveal
+        >
+          {meta.map((item) => (
+            <div>
+              <p class="text-[0.65rem] tracking-[0.2em] text-anthracite/50 uppercase">{item.label}</p>
+              <p class="mt-1 text-sm text-anthracite/80">{item.value}</p>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
     <div class="mt-24 border-t border-pierre/40 pt-20 md:mt-32 md:pt-24">
-      <ProjectStoryGallery entries={gallerySections} projectTitle={project.title} />
+      {
+        project.photos ? (
+          <ProjectPhotoGallery photos={project.photos} />
+        ) : (
+          <ProjectStoryGallery entries={gallerySections} projectTitle={project.title} />
+        )
+      }
     </div>
   </section>
 </BaseLayout>

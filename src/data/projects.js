@@ -13,8 +13,81 @@ export const categories = [
   { slug: "residentiel", label: "Résidentiels" },
   { slug: "retail", label: "Retail" },
   { slug: "restaurant", label: "Restaurant" },
+  { slug: "bureaux", label: "Bureaux/Tertiaire" },
   { slug: "scenographie", label: "Scénographie" },
 ];
+
+// Vrais projets à galerie de photos libre (un seul texte de présentation,
+// pas de texte par photo) : chaque photo porte son propre alt et ses
+// dimensions réelles. Les fichiers sont rangés dans public/images/<id>/NN.jpg
+// dans l'ordre d'affichage. Voir ProjectPhotoGallery.astro.
+const photo = (folder, file, width, height, alt) => ({
+  src: `/images/${folder}/${file}.jpg`,
+  width,
+  height,
+  alt,
+});
+
+const tahitiPhotos = (() => {
+  const f = "hotel-le-tahiti-arue";
+  const t = "Hôtel Le Tahiti, Arue";
+  return [
+    photo(f, "01", 2000, 1333, `${t} — suite : baignoire spa face à un panneau mural de grandes feuilles tropicales`),
+    photo(f, "02", 2000, 1333, `${t} — suite : lit à tête de lit en bois arrondie devant la tapisserie murale graphique sur mesure`),
+    photo(f, "03", 2000, 1333, `${t} — suite : coin salon, canapé gris et fauteuils en bois devant la tapisserie murale sur mesure`),
+    photo(f, "04", 2000, 1333, `${t} — suite : porte coulissante sur la salle de bain, armoire habillée de tissu et suspensions noires`),
+    photo(f, "05", 2000, 1333, `${t} — suite : chambre ouverte sur la terrasse et l'océan, banc en pierre au pied du lit`),
+    photo(f, "06", 2000, 1333, `${t} — suite : baignoire spa en terrasse face à l'océan au coucher du soleil`),
+    photo(f, "07", 2000, 1333, `${t} — suite : tête de lit en bois à chevrons, fauteuils en teck et lampadaires à globes`),
+    photo(f, "08", 2000, 1333, `${t} — suite : baignoire spa devant le mur de feuilles, terrasse ouverte sur le lagon`),
+    photo(f, "09", 2000, 1333, `${t} — suite : salon vu depuis la terrasse, fauteuils en corde tressée et guéridon jaune`),
+  ];
+})();
+
+const boraPhotos = (() => {
+  const f = "intercontinental-bora-bora-lobby";
+  const t = "InterContinental Bora Bora, lobby";
+  return [
+    photo(f, "01", 1500, 2000, `${t} — suspensions en fleurs de fibres tressées sous la charpente et la toiture traditionnelle`),
+    photo(f, "02", 1500, 2000, `${t} — salon lounge : fauteuils en rotin blanc et velours terracotta sur un tapis à motifs végétaux, banque d'accueil au fond`),
+    photo(f, "03", 1500, 2000, `${t} — pavillon d'entrée : bancs en bois, colonnes de bambou et jardin tropical`),
+    photo(f, "04", 1500, 2000, `${t} — salon lounge : fauteuils terracotta et rotin blanc sous les suspensions en fleurs`),
+    photo(f, "05", 1500, 2000, `${t} — détail des suspensions en fleurs de fibres tressées et des luminaires en osier`),
+    photo(f, "06", 2000, 1500, `${t} — deux fauteuils en rotin blanc autour d'une table basse à piètement doré, devant les fenêtres sur le jardin`),
+    photo(f, "07", 1500, 2000, `${t} — détail du tapis tissé aux motifs organiques vert sauge et vert foncé`),
+    photo(f, "08", 1500, 2000, `${t} — fauteuils terracotta et rotin devant les portes-fenêtres en bois et bambou`),
+  ];
+})();
+
+const agencePhotos = (() => {
+  const f = "agence-communication-bureaux";
+  const t = "Agence de communication, bureaux";
+  return [
+    photo(f, "01", 2000, 1600, `${t} — open space : table de travail en chêne clair à pieds jaunes, chaises noires et mur gris anthracite`),
+    photo(f, "02", 1413, 2000, `${t} — cloison à claire-voie en bois clair et latte jaune séparant l'accueil de l'open space`),
+    photo(f, "03", 1333, 2000, `${t} — open space : suspensions à câbles colorés, garde-corps en métal déployé noir et grande baie vitrée`),
+    photo(f, "04", 2000, 1333, `${t} — open space en longueur le long des baies vitrées, cadre jaune et tabouret jaune au premier plan`),
+    photo(f, "05", 2000, 1581, `${t} — espace détente : plan de travail en bois et tabourets jaunes devant un mur noir`),
+    photo(f, "06", 1333, 2000, `${t} — détail des pieds de table jaunes et des filets jaunes incrustés dans le plateau`),
+  ];
+})();
+
+const maisonPhotos = (() => {
+  const f = "maison-particuliere";
+  const t = "Maison particulière";
+  return [
+    photo(f, "01", 427, 640, `${t} — cuisine : îlot sombre à plateau en bois brut et suspensions circulaires`),
+    photo(f, "02", 640, 427, `${t} — salon : grande verrière en acier noir sur le jardin, fauteuil et ottoman Eames`),
+    photo(f, "03", 427, 640, `${t} — salle à manger : suspensions sculpturales en rotin tressé au-dessus d'une table sombre`),
+    photo(f, "04", 640, 427, `${t} — jardin d'eau intérieur : bassin, cascade et mur végétal sous un brise-soleil en bois`),
+    photo(f, "05", 427, 640, `${t} — baie vitrée cadrant un tiki sculpté au cœur du jardin tropical`),
+    photo(f, "06", 640, 427, `${t} — chambre ouverte sur la terrasse et les bananiers, vue sur l'océan`),
+    photo(f, "07", 640, 427, `${t} — piscine à débordement et terrasse en bois face à l'océan et à l'île`),
+    photo(f, "08", 640, 427, `${t} — chambre : tête de lit graphique à liserés cuivrés`),
+    photo(f, "09", 640, 427, `${t} — cuisine : îlot en pierre sombre, plan de travail en bois brut et suspension circulaire`),
+    photo(f, "10", 640, 427, `${t} — salon bibliothèque sur mesure en bois, canapé gris et enceinte bleue`),
+  ];
+})();
 
 export const projects = [
   {
@@ -142,6 +215,79 @@ export const projects = [
     cover: "/images/maison-individuelle/cover.jpg",
     images: ["/images/maison-individuelle/cover.jpg"],
     imageDims: [[1600, 1200]],
+  },
+  {
+    // Vrai projet — texte fourni par la cliente, photos HD (galerie libre).
+    // Année, surface et mission non communiquées : champs volontairement
+    // absents (la fiche projet masque les métadonnées manquantes).
+    id: "intercontinental-bora-bora-lobby",
+    title: "InterContinental Bora Bora",
+    subtitle: "Réinventer le lobby sans perdre son âme.",
+    category: "hotels",
+    location: "Bora Bora",
+    body: [
+      "Pour le lobby de l'InterContinental Bora Bora, le défi était de moderniser les espaces tout en préservant l'authenticité et l'identité polynésienne du lieu.",
+      "Nous avons travaillé sur un équilibre subtil entre design contemporain, matières naturelles et références culturelles locales, afin de créer un lobby plus actuel, tout en restant profondément ancré dans son environnement.",
+      "Pièce maîtresse du projet, un tapis en tifaifai entièrement réalisé sur mesure vient donner une identité forte à l'espace et inscrire le design dans une véritable démarche artisanale.",
+      "Un projet particulièrement stimulant en termes de création, où chaque détail devait trouver sa place entre modernité, élégance et authenticité.",
+    ],
+    cover: boraPhotos[0].src,
+    images: boraPhotos.map((p) => p.src),
+    photos: boraPhotos,
+  },
+  {
+    id: "hotel-le-tahiti-arue",
+    title: "Hôtel Le Tahiti",
+    subtitle: "L'élégance du sur mesure.",
+    category: "hotels",
+    location: "Arue, Tahiti",
+    mission: "Aménagement sur-mesure d'une suite, mobilier et tapisserie murale",
+    body: [
+      "L'Hôtel Le Tahiti à Arue a été une aventure particulièrement enrichissante, qui nous a permis d'exprimer pleinement notre créativité et d'apporter notre signature à travers un travail de sur mesure jusque dans les moindres détails.",
+      "Nous avons imaginé et développé des éléments spécifiques pour l'hôtel, tout en assurant directement au sein de l'agence le sourcing, la sélection et la commande du mobilier, afin de garantir la cohérence et la qualité de l'ensemble.",
+      "La tapisserie, elle aussi signée Interior Design Tahiti, vient compléter cet univers et renforcer l'identité propre du lieu.",
+      "Un projet où nous avons privilégié le maximum de pièces sur mesure, pour créer un hôtel à la fois élégant, singulier et profondément ancré dans son identité.",
+      "Un hôtel de renom auquel nous sommes particulièrement attachés, et une réalisation qui illustre parfaitement notre goût pour le détail, la culture polynésienne, la création et le sur mesure.",
+      "Les chambres signature signées Interieur Design Tahiti",
+    ],
+    // Couverture : la vue d'ensemble de la chambre (02), pas la salle de bain (01).
+    cover: tahitiPhotos[1].src,
+    images: tahitiPhotos.map((p) => p.src),
+    photos: tahitiPhotos,
+  },
+  {
+    id: "maison-particuliere",
+    title: "Maison particulière",
+    subtitle: "Créer un écrin entre architecture et nature.",
+    category: "residentiel",
+    body: [
+      "À partir d'une maison aux volumes relativement classiques, nous avons imaginé un univers authentique, généreux et profondément connecté à son environnement.",
+      "L'objectif était de transformer les espaces sans les dénaturer, en leur apportant davantage de caractère, de profondeur et de respiration. Les matières naturelles, les lignes graphiques et les détails sur mesure viennent structurer les pièces tout en conservant une sensation de simplicité.",
+      "Mais le véritable fil conducteur du projet est la végétation.",
+      "Les jardins deviennent de véritables éléments d'architecture. Ils s'invitent dans les espaces de vie, accompagnent les circulations et créent des perspectives depuis l'intérieur. Dans la salle de bains, le jardin tropical devient même une pièce à part entière : la douche s'ouvre sur un écrin végétal et minéral, offrant une expérience presque extérieure.",
+      "Dans la chambre, un mur graphique habillé de matière et souligné de détails métalliques donne une nouvelle identité à l'espace, tandis que les ouvertures et les perspectives maintiennent un lien permanent avec les extérieurs.",
+      "Nous avons ainsi transformé une maison assez ordinaire en un lieu singulier, spacieux et vivant, où l'architecture intérieure dialogue en permanence avec la nature.",
+    ],
+    // Couverture : la piscine à débordement (07), la vue « effet wow » du brief.
+    cover: maisonPhotos[6].src,
+    images: maisonPhotos.map((p) => p.src),
+    photos: maisonPhotos,
+  },
+  {
+    id: "agence-communication-bureaux",
+    title: "Agence de communication",
+    subtitle: "Bureaux, 15 postes sur 80 m².",
+    category: "bureaux",
+    surface: "80 m² (15 postes)",
+    body: [
+      "Le noir et le jaune ont été le fil conducteur de ce projet, affirmant dès l'entrée l'identité dynamique et créative de cette agence de communication.",
+      "Dans un espace de seulement 80 m² destiné à accueillir 15 personnes, notre savoir-faire a été essentiel pour optimiser chaque mètre carré, travailler les volumes et créer une organisation fluide, fonctionnelle et agréable au quotidien.",
+      "L'enjeu était de donner de l'ampleur à l'espace tout en créant différents univers de travail, sans perdre la cohérence d'ensemble. Le mobilier, les circulations, les matériaux et les éléments graphiques ont ainsi été pensés comme un véritable prolongement de l'identité de l'agence.",
+      "Transformer une surface contrainte en un espace de travail vivant, fonctionnel et singulier : c'est là que notre expertise prend tout son sens.",
+    ],
+    cover: agencePhotos[0].src,
+    images: agencePhotos.map((p) => p.src),
+    photos: agencePhotos,
   },
   {
     id: "villa-tefana",
@@ -289,7 +435,13 @@ export const projects = [
   },
 ];
 
-export const featuredProject = projects.find((p) => p.id === "hotel-manava");
+// Les projets à texte multi-paragraphes (body) exposent leur 1er paragraphe
+// comme description courte (meta description, aperçu Open Graph).
+for (const project of projects) {
+  if (project.body && !project.description) project.description = project.body[0];
+}
+
+export const featuredProject =projects.find((p) => p.id === "hotel-manava");
 
 export const heroPoster = "/images/hero-poster.jpg";
 // Vraie photo de Nathalie Weste fournie par la cliente.

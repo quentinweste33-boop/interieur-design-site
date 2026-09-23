@@ -1,0 +1,69 @@
+---
+// Galerie photo libre grand format pour les projets à texte unique (voir
+// `photos` dans data/projects.js) : les photos gardent leur ordre, chacune à
+// son ratio d'origine (aucun recadrage, donc aucune photo tronquée) et jamais
+// affichée au-delà de sa taille réelle, pour ne pas flouter les sources
+// basse résolution.
+//
+// Mise en page : les paysages HD (>= 1600 px) occupent toute la largeur ;
+// les autres photos se rangent deux par deux ; une photo restée seule est
+// centrée sur une demi-largeur.
+interface Photo {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+}
+
+interface Props {
+  photos: Photo[];
+}
+
+const { photos } = Astro.props;
+
+const isWide = (p: Photo) => p.width > p.height && p.width >= 1600;
+
+const rows: Photo[][] = [];
+for (let i = 0; i < photos.length; i++) {
+  if (isWide(photos[i]) || i === photos.length - 1 || isWide(photos[i + 1])) {
+    rows.push([photos[i]]);
+  } else {
+    rows.push([photos[i], photos[i + 1]]);
+    i++;
+  }
+}
+---
+
+<div class="space-y-6 md:space-y-8">
+  {
+    rows.map((row) => {
+      const single = row.length === 1;
+      const wide = single && isWide(row[0]);
+      return (
+        <div
+          class={
+            single
+              ? wide
+                ? ""
+                : "mx-auto md:w-[calc(50%-1rem)]"
+              : "grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-8"
+          }
+          data-reveal
+        >
+          {row.map((photo) => (
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              decoding="async"
+              width={photo.width}
+              height={photo.height}
+              style={`max-width:${photo.width}px`}
+              class="mx-auto block h-auto w-full bg-beige"
+            />
+          ))}
+        </div>
+      );
+    })
+  }
+</div>
