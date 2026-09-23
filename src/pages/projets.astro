@@ -1,13 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
-import RealisationsCarousel from "../components/RealisationsCarousel.astro";
 import { projects } from "../data/projects";
 ---
 
 <BaseLayout
   title="Projets"
-  description="Portfolio de projets d'architecture d'intérieur en Polynésie française : hôtels, résidences, retail, restaurants et scénographies."
+  description="Portfolio de projets d'architecture d'intérieur en Polynésie française : hôtels, résidences et espaces tertiaires."
   ogImage={projects[0].cover}
 >
   <section class="mx-auto max-w-[1400px] px-6 pt-20 pb-20 md:px-10">
@@ -15,7 +14,7 @@ import { projects } from "../data/projects";
       Portfolio
     </p>
     <h1 class="max-w-2xl font-serif text-4xl leading-tight font-normal md:text-5xl" data-reveal>
-      Hôtels, résidences, retail, restaurants et scénographies
+      Hôtels, résidences et espaces tertiaires
     </h1>
     <p class="mt-6 max-w-xl text-anthracite/70" data-reveal>
       Une sélection de projets menés en Polynésie française. Cliquez sur un projet
@@ -25,9 +24,5 @@ import { projects } from "../data/projects";
 
   <section class="mx-auto max-w-[1400px] px-6 pb-32 md:px-10">
     <ProjectGrid />
-  </section>
-
-  <section class="border-t border-pierre/40 bg-beige/40">
-    <RealisationsCarousel />
   </section>
 </BaseLayout>

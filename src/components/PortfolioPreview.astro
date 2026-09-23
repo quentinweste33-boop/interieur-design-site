@@ -3,7 +3,12 @@ import { projects } from "../data/projects";
 
 // Sélection par id (et non par index) : l'ordre du tableau projects évolue à
 // chaque nouveau projet réel ajouté.
-const featuredIds = ["hotel-le-corail", "boutique-heiva", "niu-beach-hotel-moorea", "restaurant-la-perle"];
+const featuredIds = [
+  "hotel-le-tahiti-arue",
+  "maison-particuliere",
+  "intercontinental-bora-bora-lobby",
+  "niu-beach-hotel-moorea",
+];
 const featured = featuredIds.map((id) => projects.find((p) => p.id === id));
 ---
 
@@ -29,7 +34,8 @@ const featured = featuredIds.map((id) => projects.find((p) => p.id === id));
             <img
               src={project.cover}
               alt={project.location ? `Intérieur du projet ${project.title}, ${project.location}` : `Intérieur du projet ${project.title}`}
-              loading="lazy"
+              loading="eager"
+              decoding="async"
               width="1600"
               height="1067"
               class="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
