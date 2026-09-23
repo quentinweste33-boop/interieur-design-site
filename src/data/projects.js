@@ -86,6 +86,44 @@ const maisonPhotos = (() => {
 
 export const projects = [
   {
+    id: "maison-particuliere",
+    title: "Maison particulière",
+    subtitle: "Créer un écrin entre architecture et nature.",
+    category: "residentiel",
+    body: [
+      "À partir d'une maison aux volumes relativement classiques, nous avons imaginé un univers authentique, généreux et profondément connecté à son environnement.",
+      "L'objectif était de transformer les espaces sans les dénaturer, en leur apportant davantage de caractère, de profondeur et de respiration. Les matières naturelles, les lignes graphiques et les détails sur mesure viennent structurer les pièces tout en conservant une sensation de simplicité.",
+      "Mais le véritable fil conducteur du projet est la végétation.",
+      "Les jardins deviennent de véritables éléments d'architecture. Ils s'invitent dans les espaces de vie, accompagnent les circulations et créent des perspectives depuis l'intérieur. Dans la salle de bains, le jardin tropical devient même une pièce à part entière : la douche s'ouvre sur un écrin végétal et minéral, offrant une expérience presque extérieure.",
+      "Dans la chambre, un mur graphique habillé de matière et souligné de détails métalliques donne une nouvelle identité à l'espace, tandis que les ouvertures et les perspectives maintiennent un lien permanent avec les extérieurs.",
+      "Nous avons ainsi transformé une maison assez ordinaire en un lieu singulier, spacieux et vivant, où l'architecture intérieure dialogue en permanence avec la nature.",
+    ],
+    // Couverture : la piscine à débordement (07), la vue « effet wow » du brief.
+    cover: maisonPhotos[6].src,
+    images: maisonPhotos.map((p) => p.src),
+    photos: maisonPhotos,
+  },
+  {
+    id: "hotel-le-tahiti-arue",
+    title: "Hôtel Le Tahiti",
+    subtitle: "L'élégance du sur mesure.",
+    category: "hotels",
+    location: "Arue, Tahiti",
+    mission: "Aménagement sur-mesure d'une suite, mobilier et tapisserie murale",
+    body: [
+      "L'Hôtel Le Tahiti à Arue a été une aventure particulièrement enrichissante, qui nous a permis d'exprimer pleinement notre créativité et d'apporter notre signature à travers un travail de sur mesure jusque dans les moindres détails.",
+      "Nous avons imaginé et développé des éléments spécifiques pour l'hôtel, tout en assurant directement au sein de l'agence le sourcing, la sélection et la commande du mobilier, afin de garantir la cohérence et la qualité de l'ensemble.",
+      "La tapisserie, elle aussi signée Interieur Design Tahiti, vient compléter cet univers et renforcer l'identité propre du lieu.",
+      "Un projet où nous avons privilégié le maximum de pièces sur mesure, pour créer un hôtel à la fois élégant, singulier et profondément ancré dans son identité.",
+      "Un hôtel de renom auquel nous sommes particulièrement attachés, et une réalisation qui illustre parfaitement notre goût pour le détail, la culture polynésienne, la création et le sur mesure.",
+      "Les chambres signature signées Interieur Design Tahiti",
+    ],
+    // Couverture : la vue d'ensemble de la chambre (02), pas la salle de bain (01).
+    cover: tahitiPhotos[1].src,
+    images: tahitiPhotos.map((p) => p.src),
+    photos: tahitiPhotos,
+  },
+  {
     id: "hotel-manava",
     title: "Sofitel Kia Ora",
     subtitle: "Moorea Beach Resort.",
@@ -175,25 +213,6 @@ export const projects = [
     imageDims: [[1024, 768]],
   },
   {
-    // Vrai projet, texte et photo repris du site officiel de la cliente
-    // (interieurdesigntahiti.com/projet-maison-individuelle) — une photo
-    // représentative choisie dans la galerie de 19, en attendant les
-    // fichiers HD originaux.
-    id: "maison-individuelle",
-    title: "Maison Individuelle",
-    subtitle: "Résidence contemporaine, Punaauia.",
-    category: "residentiel",
-    location: "Punaauia",
-    year: "2020",
-    surface: "250 m²",
-    mission: "Aménagement intérieur et décoration d'une maison individuelle",
-    description:
-      "Une oasis de modernité et de fraîcheur tropicale, où chaque détail est pensé pour évoquer un sentiment de sérénité et d'évasion — l'harmonie parfaite entre design contemporain et influences tropicales.",
-    cover: "/images/maison-individuelle/cover.jpg",
-    images: ["/images/maison-individuelle/cover.jpg"],
-    imageDims: [[1600, 1200]],
-  },
-  {
     // Vrai projet — texte fourni par la cliente, photos HD (galerie libre).
     // Année, surface et mission non communiquées : champs volontairement
     // absents (la fiche projet masque les métadonnées manquantes).
@@ -213,42 +232,23 @@ export const projects = [
     photos: boraPhotos,
   },
   {
-    id: "hotel-le-tahiti-arue",
-    title: "Hôtel Le Tahiti",
-    subtitle: "L'élégance du sur mesure.",
-    category: "hotels",
-    location: "Arue, Tahiti",
-    mission: "Aménagement sur-mesure d'une suite, mobilier et tapisserie murale",
-    body: [
-      "L'Hôtel Le Tahiti à Arue a été une aventure particulièrement enrichissante, qui nous a permis d'exprimer pleinement notre créativité et d'apporter notre signature à travers un travail de sur mesure jusque dans les moindres détails.",
-      "Nous avons imaginé et développé des éléments spécifiques pour l'hôtel, tout en assurant directement au sein de l'agence le sourcing, la sélection et la commande du mobilier, afin de garantir la cohérence et la qualité de l'ensemble.",
-      "La tapisserie, elle aussi signée Interieur Design Tahiti, vient compléter cet univers et renforcer l'identité propre du lieu.",
-      "Un projet où nous avons privilégié le maximum de pièces sur mesure, pour créer un hôtel à la fois élégant, singulier et profondément ancré dans son identité.",
-      "Un hôtel de renom auquel nous sommes particulièrement attachés, et une réalisation qui illustre parfaitement notre goût pour le détail, la culture polynésienne, la création et le sur mesure.",
-      "Les chambres signature signées Interieur Design Tahiti",
-    ],
-    // Couverture : la vue d'ensemble de la chambre (02), pas la salle de bain (01).
-    cover: tahitiPhotos[1].src,
-    images: tahitiPhotos.map((p) => p.src),
-    photos: tahitiPhotos,
-  },
-  {
-    id: "maison-particuliere",
-    title: "Maison particulière",
-    subtitle: "Créer un écrin entre architecture et nature.",
+    // Vrai projet, texte et photo repris du site officiel de la cliente
+    // (interieurdesigntahiti.com/projet-maison-individuelle) — une photo
+    // représentative choisie dans la galerie de 19, en attendant les
+    // fichiers HD originaux.
+    id: "maison-individuelle",
+    title: "Maison Individuelle",
+    subtitle: "Résidence contemporaine, Punaauia.",
     category: "residentiel",
-    body: [
-      "À partir d'une maison aux volumes relativement classiques, nous avons imaginé un univers authentique, généreux et profondément connecté à son environnement.",
-      "L'objectif était de transformer les espaces sans les dénaturer, en leur apportant davantage de caractère, de profondeur et de respiration. Les matières naturelles, les lignes graphiques et les détails sur mesure viennent structurer les pièces tout en conservant une sensation de simplicité.",
-      "Mais le véritable fil conducteur du projet est la végétation.",
-      "Les jardins deviennent de véritables éléments d'architecture. Ils s'invitent dans les espaces de vie, accompagnent les circulations et créent des perspectives depuis l'intérieur. Dans la salle de bains, le jardin tropical devient même une pièce à part entière : la douche s'ouvre sur un écrin végétal et minéral, offrant une expérience presque extérieure.",
-      "Dans la chambre, un mur graphique habillé de matière et souligné de détails métalliques donne une nouvelle identité à l'espace, tandis que les ouvertures et les perspectives maintiennent un lien permanent avec les extérieurs.",
-      "Nous avons ainsi transformé une maison assez ordinaire en un lieu singulier, spacieux et vivant, où l'architecture intérieure dialogue en permanence avec la nature.",
-    ],
-    // Couverture : la piscine à débordement (07), la vue « effet wow » du brief.
-    cover: maisonPhotos[6].src,
-    images: maisonPhotos.map((p) => p.src),
-    photos: maisonPhotos,
+    location: "Punaauia",
+    year: "2020",
+    surface: "250 m²",
+    mission: "Aménagement intérieur et décoration d'une maison individuelle",
+    description:
+      "Une oasis de modernité et de fraîcheur tropicale, où chaque détail est pensé pour évoquer un sentiment de sérénité et d'évasion — l'harmonie parfaite entre design contemporain et influences tropicales.",
+    cover: "/images/maison-individuelle/cover.jpg",
+    images: ["/images/maison-individuelle/cover.jpg"],
+    imageDims: [[1600, 1200]],
   },
   {
     id: "agence-communication-bureaux",

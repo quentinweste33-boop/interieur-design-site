@@ -1,0 +1,26 @@
+---
+// Séparateur de marque : le monogramme officiel (badge sapin) entre deux
+// filets, réutilisé comme "couture" discrète partout où une simple ligne
+// (border-t) marquait jusqu'ici une transition entre deux blocs — fiche
+// projet, page À propos. Volontairement petit et sobre (pas un filigrane en
+// grand format) : le badge n'existe qu'en carré plein (pas de version
+// détourée), un usage discret évite tout effet de pavé.
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class:list={["flex items-center justify-center gap-5", className]} aria-hidden="true">
+  <span class="h-px w-16 bg-pierre/50 sm:w-24"></span>
+  <img
+    src="/logo/logo-icone-sapin.png"
+    alt=""
+    width="512"
+    height="518"
+    loading="lazy"
+    class="h-7 w-7 object-contain"
+  />
+  <span class="h-px w-16 bg-pierre/50 sm:w-24"></span>
+</div>

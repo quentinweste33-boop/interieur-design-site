@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectStoryGallery from "../../components/ProjectStoryGallery.astro";
 import ProjectPhotoGallery from "../../components/ProjectPhotoGallery.astro";
+import BrandDivider from "../../components/BrandDivider.astro";
 import { categories, projects, getGallerySections } from "../../data/projects";
 
 export async function getStaticPaths() {
@@ -92,7 +93,8 @@ const gallerySections = project.photos ? [] : getGallerySections(project);
       )
     }
 
-    <div class="mt-24 border-t border-pierre/40 pt-20 md:mt-32 md:pt-24">
+    <div class="mt-24 md:mt-32">
+      <BrandDivider class="mb-20 md:mb-24" />
       {
         project.photos ? (
           <ProjectPhotoGallery photos={project.photos} />

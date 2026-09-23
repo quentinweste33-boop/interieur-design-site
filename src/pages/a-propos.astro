@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { about } from "../data/about";
 import ServicesCarousel from "../components/ServicesCarousel.astro";
+import BrandDivider from "../components/BrandDivider.astro";
 ---
 
 <BaseLayout
@@ -26,7 +27,10 @@ import ServicesCarousel from "../components/ServicesCarousel.astro";
           {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
         </div>
 
-        <blockquote class="mt-10 border-t border-pierre/40 pt-8" data-reveal>
+        <div class="mt-10">
+          <BrandDivider class="justify-start" />
+        </div>
+        <blockquote class="pt-8" data-reveal>
           <p class="font-serif text-2xl leading-snug md:text-3xl">
             « Imaginer, révéler et transformer les lieux afin qu'ils deviennent
             des espaces inspirants, alignés avec ceux qui les vivent — telle est
@@ -60,5 +64,8 @@ import ServicesCarousel from "../components/ServicesCarousel.astro";
     </div>
   </section>
 
+  <div class="pt-20 md:pt-24">
+    <BrandDivider />
+  </div>
   <ServicesCarousel />
 </BaseLayout>

@@ -24,6 +24,21 @@ document.addEventListener("astro:before-swap", () => {
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 });
 
+// Astro remet nativement le scroll à 0 (ou restaure la position mémorisée en
+// navigation arrière) juste avant de déclencher "astro:after-swap" — mais
+// Lenis ignore ce changement : sa propre position animée reste celle de la
+// page précédente, et le prochain tick de son rAF (gsap.ticker, indépendant
+// du swap) la réapplique, ramenant visuellement le scroll à l'endroit où il
+// était avant le clic. Effet observé : cliquer sur un projet en ayant déjà
+// scrollé loin (grille /projets, tuile home, bouton "voir d'autres projets")
+// ouvre parfois la nouvelle page au milieu ou en bas au lieu du haut. On
+// resynchronise donc Lenis sur la position native — déjà correcte à ce
+// stade, qu'elle soit 0 (nouvelle page) ou restaurée (navigation arrière) —
+// immédiatement après le swap, avant que son rAF n'ait la main.
+document.addEventListener("astro:after-swap", () => {
+  lenis.scrollTo(window.scrollY, { immediate: true, force: true });
+});
+
 document.addEventListener("astro:page-load", () => {
   requestAnimationFrame(() => ScrollTrigger.refresh());
 });
