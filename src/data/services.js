@@ -1,8 +1,9 @@
 // Texte réel repris du site officiel de la cliente
-// (interieurdesigntahiti.com). Images en placeholders Unsplash — la
-// référence de mise en page réutilise elle-même des visuels génériques
-// d'une carte à l'autre (stock du précédent prestataire, pas de vraies
-// photos de projets), à remplacer par les vraies photos une fois reçues.
+// (interieurdesigntahiti.com). Image de l'item 02 : placeholder Unsplash
+// générique (stock, en attendant une vraie photo de Nathalie). Images des
+// items 04-09 : visuels stock eux aussi, mais repris de la maquette de
+// référence du précédent prestataire plutôt que des placeholders Unsplash
+// choisis au hasard — au moins cohérents avec l'action de chaque service.
 const u = (id) =>
   `https://images.unsplash.com/photo-${id}?w=1200&h=900&q=80&auto=format&fit=crop`;
 
@@ -36,36 +37,36 @@ export const services = [
     title: "Projection 3D",
     description:
       "Projection dans vos futurs espaces : book photo ou vidéo 3D en visuels photoréalistes.",
-    image: u("1704040686413-2c607dbd2f06"),
+    image: "/images/services/projection-3d.jpg",
   },
   {
     number: "05",
     title: "Budgétisation",
     description: "Budgétisation détaillée de votre projet par lot & sélection des artisans.",
-    image: u("1634822929277-0c51ca0e8846"),
+    image: "/images/services/budgetisation.jpg",
   },
   {
     number: "06",
     title: "Mobiliers sur mesure",
     description: "Fabrication de mobiliers sur mesure & plans techniques.",
-    image: u("1621261027519-a71ac66d5a68"),
+    image: "/images/services/mobiliers-sur-mesure.png",
   },
   {
     number: "07",
     title: "Sourcing décoration",
     description: "Sourcing de mobiliers & décoration, gestion des commandes.",
-    image: u("1630905119003-329447458f85"),
+    image: "/images/services/sourcing-decoration.jpg",
   },
   {
     number: "08",
     title: "Gestion des permis",
     description: "Gestion administrative des permis nécessaires à votre projet.",
-    image: u("1757924461488-ef9ad0670978"),
+    image: "/images/services/gestion-des-permis.jpg",
   },
   {
     number: "09",
     title: "Pilotage de chantier",
     description: "Supervision & pilotage de chantier de A à Z.",
-    image: u("1660599197052-c610e8a15c9e"),
+    image: "/images/services/pilotage-de-chantier.jpg",
   },
 ];

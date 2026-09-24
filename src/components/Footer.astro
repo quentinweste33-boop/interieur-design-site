@@ -1,5 +1,10 @@
 ---
 const year = new Date().getFullYear();
+
+// Aucune lib d'icônes dans le repo (Lucide/Heroicons ne sont pas des
+// dépendances du projet) : icônes en trait fin dessinées à la main, mêmes
+// conventions que les flèches de carrousel déjà présentes sur le site
+// (stroke="currentColor", fill="none", trait fin).
 ---
 
 <footer class="border-t border-pierre/40 bg-ivoire">
@@ -43,17 +48,75 @@ const year = new Date().getFullYear();
   </div>
 
   <div
-    class="flex items-center justify-center gap-3 border-t border-pierre/40 px-6 py-6 text-xs tracking-wide text-anthracite/40 md:justify-start md:px-10"
+    class="flex flex-col items-center gap-5 border-t border-pierre/40 px-6 py-6 text-xs tracking-wide text-anthracite/40 md:flex-row md:justify-between md:px-10"
   >
-    <img
-      src="/logo/logo-icone-sapin.png"
-      alt=""
-      aria-hidden="true"
-      width="512"
-      height="518"
-      loading="lazy"
-      class="h-4 w-4 shrink-0 object-contain opacity-70"
-    />
-    <span>© {year} Interieur Design. Tous droits réservés.</span>
+    <div class="flex items-center gap-3">
+      <img
+        src="/logo/logo-icone-sapin.png"
+        alt=""
+        aria-hidden="true"
+        width="512"
+        height="518"
+        loading="lazy"
+        class="h-4 w-4 shrink-0 object-contain opacity-70"
+      />
+      <span>© {year} Interieur Design. Tous droits réservés.</span>
+    </div>
+
+    <div class="flex items-center gap-5">
+      <a
+        href="https://www.facebook.com/interieurdesigntahiti/?locale=fr_FR"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook Interieur Design Tahiti"
+        class="text-anthracite/40 transition-colors hover:text-sauge"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M15.5 3h-2.25A4.25 4.25 0 0 0 9 7.25V10H7v3h2v8h3v-8h2.5l.5-3h-3V7.25c0-.69.56-1.25 1.25-1.25H15.5z"
+            stroke="currentColor"
+            stroke-width="1.3"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+      <a
+        href="https://www.instagram.com/interieurdesigntahiti/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram Interieur Design Tahiti"
+        class="text-anthracite/40 transition-colors hover:text-sauge"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="12" cy="12" r="3.7" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" />
+        </svg>
+      </a>
+      <a
+        href="https://www.tiktok.com/@interieurdesigntahiti"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok Interieur Design Tahiti"
+        class="text-anthracite/40 transition-colors hover:text-sauge"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M14 4v10.4"
+            stroke="currentColor"
+            stroke-width="1.3"
+            stroke-linecap="round"
+          />
+          <path
+            d="M14 4c.7 2.7 2.9 4.6 5.7 4.8"
+            stroke="currentColor"
+            stroke-width="1.3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="10.6" cy="15.3" r="3.4" stroke="currentColor" stroke-width="1.3" />
+        </svg>
+      </a>
+    </div>
   </div>
 </footer>
