@@ -22,7 +22,6 @@ function loadHeroVideo() {
   source.src = src;
   source.type = "video/mp4";
   video.appendChild(source);
-  video.load();
   video.dataset.loaded = "true";
 
   // Le poster (image séparée sous la vidéo) reste visible jusqu'à ce que la
@@ -36,9 +35,25 @@ function loadHeroVideo() {
     { once: true },
   );
 
-  video.play().catch(() => {
-    // autoplay peut être refusé par le navigateur ; le poster reste affiché.
-  });
+  // load() réinitialise l'élément : un play() appelé dans la foulée est
+  // souvent rejeté (AbortError) car la source n'a pas encore de données
+  // exploitables — sans retry, la vidéo restait alors en pause indéfiniment
+  // (le poster ne disparaissait jamais). On retente donc dès que le
+  // navigateur signale qu'il peut démarrer la lecture ("canplay"), en plus
+  // d'une tentative immédiate pour les navigateurs qui n'en ont pas besoin.
+  const attemptPlay = () => {
+    video.play()?.catch((error) => {
+      // Autoplay réellement refusé par le navigateur (rare pour une vidéo
+      // muted, mais possible) : rien à tenter de plus, le poster reste
+      // affiché. Toute autre erreur (typiquement AbortError juste après
+      // load()) est déjà couverte par le retry sur "canplay" ci-dessous.
+      if (error?.name === "NotAllowedError") return;
+    });
+  };
+
+  video.addEventListener("canplay", attemptPlay, { once: true });
+  video.load();
+  attemptPlay();
 }
 
 function initHeroVideo() {
