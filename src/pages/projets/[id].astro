@@ -17,6 +17,11 @@ const categoryLabel = Object.fromEntries(categories.map((c) => [c.slug, c.label]
   project.category
 ];
 
+// Nom donné par Nathalie au projet (ex. "SAGE") : tant qu'il n'est pas
+// renseigné, le bandeau d'ouverture affiche le titre descriptif à la place —
+// jamais de "null" ni de champ vide.
+const bannerName = project.nom ?? project.title;
+
 // Surface / mission / année / lieu sont optionnels : un champ non renseigné
 // n'est jamais affiché (ni valeur inventée, ni cellule vide), et la grille
 // s'adapte au nombre de champs restants.
@@ -44,16 +49,47 @@ const gallerySections = project.photos ? [] : getGallerySections(project);
   title={project.title}
   description={project.description}
   ogImage={project.cover}
+  overlayHeader
 >
-  <section class="mx-auto max-w-[1400px] px-6 pt-20 pb-32 md:px-10">
+  <section class="relative flex h-[80vh] w-full items-center justify-center overflow-hidden md:h-[90vh]">
+    <img
+      src={project.cover}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <!-- Dégradé sauge/anthracite (pas de noir dur) : assure la lisibilité du
+         nom et de la nav superposée, sans écraser la photo. -->
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-anthracite/55 via-anthracite/20 to-anthracite/60"
+    >
+    </div>
+
     <a
       href="/projets"
-      class="mb-10 inline-block text-xs tracking-[0.2em] text-anthracite/50 uppercase transition-colors hover:text-anthracite"
+      class="absolute left-6 top-24 z-10 text-xs tracking-[0.2em] text-ivoire/80 uppercase transition-colors hover:text-ivoire md:left-10 md:top-28"
       data-reveal
     >
       ← Retour aux projets
     </a>
 
+    <div class="relative z-10 max-w-4xl px-6 text-center">
+      <p
+        class="font-serif text-3xl leading-tight font-normal text-ivoire uppercase break-words sm:text-5xl sm:leading-none sm:tracking-[0.02em] md:text-7xl md:tracking-[0.04em]"
+        data-reveal
+      >
+        {bannerName}
+      </p>
+      <p
+        class="mt-5 text-xs tracking-[0.4em] text-ivoire/80 uppercase md:text-sm"
+        data-reveal
+      >
+        {categoryLabel}
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-6 pt-20 pb-32 md:px-10">
     <div class="flex flex-col justify-between gap-8 md:flex-row md:items-end">
       <div data-reveal>
         <h1 class="font-serif text-4xl leading-tight font-normal md:text-5xl">

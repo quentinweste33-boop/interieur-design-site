@@ -84,9 +84,16 @@ const maisonPhotos = (() => {
   ];
 })();
 
+// `nom` : le nom propre donné par Nathalie à chaque projet (ex. "SAGE"),
+// affiché en grand sur le bandeau d'ouverture plein écran de la fiche
+// projet — à la place du titre descriptif, qui reste utilisé partout
+// ailleurs (cartes, accueil) et sert de repli tant que `nom` est absent
+// (voir bannerName dans pages/projets/[id].astro). En attente des 7 noms
+// côté cliente : ne pas en inventer.
 export const projects = [
   {
     id: "maison-particuliere",
+    nom: null,
     title: "Maison particulière",
     subtitle: "Créer un écrin entre architecture et nature.",
     category: "residentiel",
@@ -105,6 +112,7 @@ export const projects = [
   },
   {
     id: "hotel-le-tahiti-arue",
+    nom: null,
     title: "Hôtel Le Tahiti",
     subtitle: "L'élégance du sur mesure.",
     category: "hotels",
@@ -125,6 +133,7 @@ export const projects = [
   },
   {
     id: "hotel-manava",
+    nom: null,
     title: "Sofitel Kia Ora",
     subtitle: "Moorea Beach Resort.",
     category: "hotels",
@@ -199,6 +208,7 @@ export const projects = [
     // (interieurdesigntahiti.com/projet-niu-beach-hotel-moorea) — photo web
     // en attendant les fichiers HD originaux.
     id: "niu-beach-hotel-moorea",
+    nom: null,
     title: "Niu Beach Hôtel Moorea",
     subtitle: "Réception d'hôtel, Moorea.",
     category: "hotels",
@@ -217,6 +227,7 @@ export const projects = [
     // Année, surface et mission non communiquées : champs volontairement
     // absents (la fiche projet masque les métadonnées manquantes).
     id: "intercontinental-bora-bora-lobby",
+    nom: null,
     title: "InterContinental Bora Bora",
     subtitle: "Réinventer le lobby sans perdre son âme.",
     category: "hotels",
@@ -237,6 +248,7 @@ export const projects = [
     // représentative choisie dans la galerie de 19, en attendant les
     // fichiers HD originaux.
     id: "maison-individuelle",
+    nom: null,
     title: "Maison Individuelle",
     subtitle: "Résidence contemporaine, Punaauia.",
     category: "residentiel",
@@ -252,6 +264,7 @@ export const projects = [
   },
   {
     id: "agence-communication-bureaux",
+    nom: null,
     title: "Agence de communication",
     subtitle: "Bureaux, 15 postes sur 80 m².",
     category: "bureaux",
