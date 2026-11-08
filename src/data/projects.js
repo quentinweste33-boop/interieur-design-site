@@ -277,6 +277,44 @@ export const projects = [
     cover: niuPhotos[0].src,
     images: niuPhotos.map((p) => p.src),
     photos: niuPhotos,
+    gallerySections: [
+      {
+        image: niuPhotos[0].src,
+        width: niuPhotos[0].width,
+        height: niuPhotos[0].height,
+        eyebrow: "La chambre",
+        title: "Un salon sous le signe du NIU",
+        description:
+          "Le motif graphique polynésien habille la tête de lit et se prolonge jusqu'au salon ouvert sur la suite — une signature discrète, répétée d'un espace à l'autre.",
+      },
+      {
+        image: niuPhotos[1].src,
+        width: niuPhotos[1].width,
+        height: niuPhotos[1].height,
+        eyebrow: "La réception",
+        title: "Bois clair et lumière rasante",
+        description:
+          "La banque d'accueil, rétroéclairée et en bois clair, donne le ton dès l'entrée : un tropical minimaliste, épuré, où chaque matière respire.",
+      },
+      {
+        image: niuPhotos[2].src,
+        width: niuPhotos[2].width,
+        height: niuPhotos[2].height,
+        eyebrow: "Le petit-déjeuner",
+        title: "Sous le signe du cocotier",
+        description:
+          "Le « NIU » se retrouve en grand sur le mur de la salle de petit-déjeuner, entouré de rotin tressé et de tons chauds — l'accueil et la paix, en filigrane.",
+      },
+      {
+        image: niuPhotos[3].src,
+        width: niuPhotos[3].width,
+        height: niuPhotos[3].height,
+        eyebrow: "Le buffet",
+        title: "Rotin tressé et tons chauds",
+        description:
+          "Suspensions en rotin et mobilier clair composent un buffet à la fois fonctionnel et chaleureux, dans la continuité du reste de la réception.",
+      },
+    ],
   },
   {
     // Vrai projet — texte fourni par la cliente, photos HD (galerie libre).
@@ -350,6 +388,44 @@ export const projects = [
     cover: conceptPhotos[0].src,
     images: conceptPhotos.map((p) => p.src),
     photos: conceptPhotos,
+    gallerySections: [
+      {
+        image: conceptPhotos[1].src,
+        width: conceptPhotos[1].width,
+        height: conceptPhotos[1].height,
+        eyebrow: "L'open space",
+        title: "Un trait jaune pour guider le regard",
+        description:
+          "Un grand cadre jaune structure la circulation entre les postes de travail — un repère graphique simple qui organise l'espace sans jamais l'alourdir.",
+      },
+      {
+        image: conceptPhotos[2].src,
+        width: conceptPhotos[2].width,
+        height: conceptPhotos[2].height,
+        eyebrow: "La mezzanine",
+        title: "Le métal déployé en suspension",
+        description:
+          "Un garde-corps en métal déployé noir surplombe les bureaux cloisonnés, apportant de la transparence sans sacrifier l'intimité de chaque poste.",
+      },
+      {
+        image: conceptPhotos[6].src,
+        width: conceptPhotos[6].width,
+        height: conceptPhotos[6].height,
+        eyebrow: "La réunion",
+        title: "Un plein cadre jaune",
+        description:
+          "La salle de réunion assume la couleur jusqu'au plafond — un geste franc qui marque les esprits et affirme l'identité du lieu.",
+      },
+      {
+        image: conceptPhotos[7].src,
+        width: conceptPhotos[7].width,
+        height: conceptPhotos[7].height,
+        eyebrow: "La kitchenette",
+        title: "Jaune jusqu'au bout",
+        description:
+          "Même la pause-café a droit à sa touche de couleur : tabourets hauts jaunes devant un plan de travail noir, pour un espace de vie cohérent de bout en bout.",
+      },
+    ],
   },
   {
     // Projet "HINA" (Retail), nom officiel donné par Nathalie (mail du
