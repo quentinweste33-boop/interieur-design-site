@@ -4,12 +4,14 @@ export const PSWP_WIDTH = 1600;
 export const PSWP_HEIGHT = 1067;
 
 // Un seul filtre par catégorie effectivement représentée dans `projects` —
-// pas de bouton menant à une grille vide (retail, restaurant et
-// scénographie n'ont plus de projet réel depuis le retrait des placeholders).
+// pas de bouton menant à une grille vide (restaurant et scénographie n'ont
+// plus de projet réel depuis le retrait des placeholders ; retail est de
+// retour avec Hineava Jewelry, nov. 2026).
 export const categories = [
   { slug: "hotels", label: "Hôtels" },
   { slug: "residentiel", label: "Résidentiels" },
   { slug: "bureaux", label: "Bureaux/Tertiaire" },
+  { slug: "retail", label: "Boutiques" },
 ];
 
 // Vrais projets à galerie de photos libre (un seul texte de présentation,
@@ -64,6 +66,40 @@ const agencePhotos = (() => {
     photo(f, "04", 2000, 1333, `${t} — open space en longueur le long des baies vitrées, cadre jaune et tabouret jaune au premier plan`),
     photo(f, "05", 2000, 1581, `${t} — espace détente : plan de travail en bois et tabourets jaunes devant un mur noir`),
     photo(f, "06", 1333, 2000, `${t} — détail des pieds de table jaunes et des filets jaunes incrustés dans le plateau`),
+    photo(f, "07", 2000, 1463, `${t} — bureau cloisonné lumineux, mobilier en bois clair et liseré jaune au sol`),
+    photo(f, "08", 2000, 1333, `${t} — open space : grand cadre jaune structurant la circulation entre les postes de travail`),
+    photo(f, "09", 1333, 2000, `${t} — mezzanine : garde-corps en métal déployé noir surplombant un bureau cloisonné`),
+    photo(f, "10", 1413, 2000, `${t} — cloison à claire-voie en bois clair et latte jaune, vue depuis l'open space`),
+    photo(f, "11", 2000, 1359, `${t} — bureau individuel cloisonné, mobilier en bois clair et touche de jaune au sol`),
+    photo(f, "12", 2000, 1600, `${t} — table de réunion au piètement jaune graphique`),
+    photo(f, "13", 2000, 1989, `${t} — salle de réunion, plafond et mur d'accent jaune plein cadre`),
+    photo(f, "14", 2000, 1581, `${t} — kitchenette : tabourets hauts jaunes devant un plan de travail noir`),
+  ];
+})();
+
+const hineavaPhotos = (() => {
+  const f = "hineava-jewelry";
+  const t = "Hineava Jewelry";
+  return [
+    photo(f, "01", 2000, 1333, `${t} — vue d'ensemble à travers le rideau de maille métallique tissé du nom de la marque, vitrines en bois sombre de part et d'autre`),
+    photo(f, "02", 2000, 1333, `${t} — plafond : suspensions sculpturales en laiton façon fleurs au-dessus du salon d'accueil`),
+    photo(f, "03", 2000, 1333, `${t} — vue d'ensemble depuis l'entrée, bureau d'accueil et vitrines en enfilade`),
+    photo(f, "04", 2000, 1306, `${t} — vitrines en bois sombre et verre, écrin pour la bijouterie`),
+    photo(f, "05", 2000, 1333, `${t} — salon lounge : banquette courbe en velours sauge et fauteuils bleu canard`),
+    photo(f, "06", 2000, 1333, `${t} — salon lounge, autre angle sur la banquette sauge et la table basse ronde`),
+    photo(f, "07", 2000, 1333, `${t} — détail des suspensions en laiton à travers le rideau de maille sauge`),
+  ];
+})();
+
+const niuPhotos = (() => {
+  const f = "niu-beach-hotel-moorea";
+  const t = "Niu Beach Hôtel Moorea";
+  return [
+    photo(f, "01", 2000, 1333, `${t} — chambre : salon ouvert sur la suite, tête de lit à motif graphique polynésien`),
+    photo(f, "02", 2000, 1333, `${t} — réception : banque d'accueil en bois clair rétroéclairée, suspensions en bois tourné`),
+    photo(f, "03", 2000, 1333, `${t} — salle de petit-déjeuner : mur à motif graphique « NIU », tables et chaises en rotin tressé`),
+    photo(f, "04", 1800, 1200, `${t} — buffet du petit-déjeuner, mur à motif graphique et suspensions en rotin`),
+    photo(f, "05", 1024, 768, `${t} — chambre, vue d'ensemble`),
   ];
 })();
 
@@ -204,9 +240,11 @@ export const projects = [
     ],
   },
   {
-    // Vrai projet, texte et photo repris du site officiel de la cliente
-    // (interieurdesigntahiti.com/projet-niu-beach-hotel-moorea) — photo web
-    // en attendant les fichiers HD originaux.
+    // Vrai projet, texte repris du site officiel de la cliente
+    // (interieurdesigntahiti.com/projet-niu-beach-hotel-moorea). 5 photos
+    // fournies par la cliente début nov. 2026 (toujours web, mais bien
+    // meilleures que le placeholder initial) — en attendant d'éventuels
+    // fichiers HD originaux.
     id: "niu-beach-hotel-moorea",
     nom: null,
     title: "Niu Beach Hôtel Moorea",
@@ -218,9 +256,9 @@ export const projects = [
     mission: "Aménagement intérieur et décoration d'une réception d'hôtel",
     description:
       "Un style tropical minimaliste et épuré, reflétant une ambiance naturelle par le jeu des textures, des fibres, des couleurs chaudes et de la pureté du blanc. Le concept s'inspire du « NIU » (cocotier), avec des graphismes polynésiens symbolisant la paix et l'accueil — modernité et éléments naturels combinés pour un environnement élégant et relaxant, adapté au cadre paradisiaque de Moorea.",
-    cover: "/images/niu-beach-hotel-moorea/cover.jpg",
-    images: ["/images/niu-beach-hotel-moorea/cover.jpg"],
-    imageDims: [[1024, 768]],
+    cover: niuPhotos[0].src,
+    images: niuPhotos.map((p) => p.src),
+    photos: niuPhotos,
   },
   {
     // Vrai projet — texte fourni par la cliente, photos HD (galerie libre).
@@ -278,6 +316,61 @@ export const projects = [
     cover: agencePhotos[0].src,
     images: agencePhotos.map((p) => p.src),
     photos: agencePhotos,
+  },
+  {
+    // Nouveau projet (photos reçues de la cliente début nov. 2026). Nom de
+    // la marque lisible sur le rideau de maille de la boutique ("HINEAVA
+    // JEWELRY"). Lieu, année, surface et mission non communiqués : champs
+    // volontairement absents (même convention qu'InterContinental Bora
+    // Bora ci-dessus) — à confirmer avec Nathalie.
+    id: "hineava-jewelry",
+    nom: "Hineava",
+    title: "Hineava Jewelry",
+    subtitle: "Un écrin pour la haute joaillerie.",
+    category: "retail",
+    description:
+      "Un rideau de maille métallique tissé du nom de la marque accueille les clients dans un univers sauge et laiton, entre vitrines en bois sombre et salon lounge en velours.",
+    cover: hineavaPhotos[0].src,
+    images: hineavaPhotos.map((p) => p.src),
+    photos: hineavaPhotos,
+    gallerySections: [
+      {
+        image: hineavaPhotos[0].src,
+        width: hineavaPhotos[0].width,
+        height: hineavaPhotos[0].height,
+        eyebrow: "L'entrée",
+        title: "Un rideau de laiton et de sauge",
+        description:
+          "Le rideau de maille métallique, tissé du nom de la marque, filtre la lumière et annonce l'univers de la boutique avant même d'y pénétrer.",
+      },
+      {
+        image: hineavaPhotos[1].src,
+        width: hineavaPhotos[1].width,
+        height: hineavaPhotos[1].height,
+        eyebrow: "Le plafond",
+        title: "Une pluie de laiton",
+        description:
+          "Suspensions sculpturales en laiton, posées comme des fleurs au-dessus du salon d'accueil — la lumière descend en cascade sur les vitrines.",
+      },
+      {
+        image: hineavaPhotos[3].src,
+        width: hineavaPhotos[3].width,
+        height: hineavaPhotos[3].height,
+        eyebrow: "Les vitrines",
+        title: "L'écrin des pièces",
+        description:
+          "Le bois sombre et le verre composent un écrin sobre, pensé pour mettre en valeur chaque pièce sans jamais lui faire concurrence.",
+      },
+      {
+        image: hineavaPhotos[4].src,
+        width: hineavaPhotos[4].width,
+        height: hineavaPhotos[4].height,
+        eyebrow: "Le salon",
+        title: "S'installer, prendre le temps",
+        description:
+          "Une banquette courbe en velours sauge et des fauteuils bleu canard composent un salon lounge, pour un essayage pris dans le temps long.",
+      },
+    ],
   },
 ];
 
