@@ -66,28 +66,46 @@ const agencePhotos = (() => {
     photo(f, "04", 2000, 1333, `${t} — open space en longueur le long des baies vitrées, cadre jaune et tabouret jaune au premier plan`),
     photo(f, "05", 2000, 1581, `${t} — espace détente : plan de travail en bois et tabourets jaunes devant un mur noir`),
     photo(f, "06", 1333, 2000, `${t} — détail des pieds de table jaunes et des filets jaunes incrustés dans le plateau`),
-    photo(f, "07", 2000, 1463, `${t} — bureau cloisonné lumineux, mobilier en bois clair et liseré jaune au sol`),
-    photo(f, "08", 2000, 1333, `${t} — open space : grand cadre jaune structurant la circulation entre les postes de travail`),
-    photo(f, "09", 1333, 2000, `${t} — mezzanine : garde-corps en métal déployé noir surplombant un bureau cloisonné`),
-    photo(f, "10", 1413, 2000, `${t} — cloison à claire-voie en bois clair et latte jaune, vue depuis l'open space`),
-    photo(f, "11", 2000, 1359, `${t} — bureau individuel cloisonné, mobilier en bois clair et touche de jaune au sol`),
-    photo(f, "12", 2000, 1600, `${t} — table de réunion au piètement jaune graphique`),
-    photo(f, "13", 2000, 1989, `${t} — salle de réunion, plafond et mur d'accent jaune plein cadre`),
-    photo(f, "14", 2000, 1581, `${t} — kitchenette : tabourets hauts jaunes devant un plan de travail noir`),
   ];
 })();
 
-const hineavaPhotos = (() => {
-  const f = "hineava-jewelry";
-  const t = "Hineava Jewelry";
+// Nouveau projet "Concept" (Bureaux/Workspaces) — à ne pas confondre avec
+// Agence de communication : style visuel proche (bois clair, accent jaune)
+// mais bien deux projets distincts d'après le mail de Nathalie du
+// 2026-11-08 (catégorisation Hospitality / Residential / Workspaces /
+// Retail du dossier d'organisation transmis).
+const conceptPhotos = (() => {
+  const f = "concept";
+  const t = "Concept";
   return [
-    photo(f, "01", 2000, 1333, `${t} — vue d'ensemble à travers le rideau de maille métallique tissé du nom de la marque, vitrines en bois sombre de part et d'autre`),
-    photo(f, "02", 2000, 1333, `${t} — plafond : suspensions sculpturales en laiton façon fleurs au-dessus du salon d'accueil`),
-    photo(f, "03", 2000, 1333, `${t} — vue d'ensemble depuis l'entrée, bureau d'accueil et vitrines en enfilade`),
-    photo(f, "04", 2000, 1306, `${t} — vitrines en bois sombre et verre, écrin pour la bijouterie`),
-    photo(f, "05", 2000, 1333, `${t} — salon lounge : banquette courbe en velours sauge et fauteuils bleu canard`),
-    photo(f, "06", 2000, 1333, `${t} — salon lounge, autre angle sur la banquette sauge et la table basse ronde`),
-    photo(f, "07", 2000, 1333, `${t} — détail des suspensions en laiton à travers le rideau de maille sauge`),
+    photo(f, "01", 2000, 1463, `${t} — bureau cloisonné lumineux, mobilier en bois clair et liseré jaune au sol`),
+    photo(f, "02", 2000, 1333, `${t} — open space : grand cadre jaune structurant la circulation entre les postes de travail`),
+    photo(f, "03", 1333, 2000, `${t} — mezzanine : garde-corps en métal déployé noir surplombant un bureau cloisonné`),
+    photo(f, "04", 1413, 2000, `${t} — cloison à claire-voie en bois clair et latte jaune, vue depuis l'open space`),
+    photo(f, "05", 2000, 1359, `${t} — bureau individuel cloisonné, mobilier en bois clair et touche de jaune au sol`),
+    photo(f, "06", 2000, 1600, `${t} — table de réunion au piètement jaune graphique`),
+    photo(f, "07", 2000, 1989, `${t} — salle de réunion, plafond et mur d'accent jaune plein cadre`),
+    photo(f, "08", 2000, 1581, `${t} — kitchenette : tabourets hauts jaunes devant un plan de travail noir`),
+  ];
+})();
+
+// Projet "HINA" (Retail) — nom officiel donné par Nathalie (mail du
+// 2026-11-08), pas "Hineava" (lu sur le rideau de maille de la boutique,
+// mais ce n'est que le nom de la marque qui y est présentée). Couverture :
+// "la photo des lampes" explicitement demandée par Nathalie comme 1ère
+// photo — le détail des suspensions en laiton à travers le rideau de
+// maille (seule photo du lot entièrement consacrée aux lampes).
+const hinaPhotos = (() => {
+  const f = "hina";
+  const t = "HINA";
+  return [
+    photo(f, "01", 2000, 1333, `${t} — détail des suspensions en laiton à travers le rideau de maille sauge`),
+    photo(f, "02", 2000, 1333, `${t} — vue d'ensemble à travers le rideau de maille métallique tissé du nom de la marque, vitrines en bois sombre de part et d'autre`),
+    photo(f, "03", 2000, 1333, `${t} — plafond : suspensions sculpturales en laiton façon fleurs au-dessus du salon d'accueil`),
+    photo(f, "04", 2000, 1333, `${t} — vue d'ensemble depuis l'entrée, bureau d'accueil et vitrines en enfilade`),
+    photo(f, "05", 2000, 1306, `${t} — vitrines en bois sombre et verre, écrin pour la bijouterie`),
+    photo(f, "06", 2000, 1333, `${t} — salon lounge : banquette courbe en velours sauge et fauteuils bleu canard`),
+    photo(f, "07", 2000, 1333, `${t} — salon lounge, autre angle sur la banquette sauge et la table basse ronde`),
   ];
 })();
 
@@ -318,53 +336,70 @@ export const projects = [
     photos: agencePhotos,
   },
   {
-    // Nouveau projet (photos reçues de la cliente début nov. 2026). Nom de
-    // la marque lisible sur le rideau de maille de la boutique ("HINEAVA
-    // JEWELRY"). Lieu, année, surface et mission non communiqués : champs
-    // volontairement absents (même convention qu'InterContinental Bora
-    // Bora ci-dessus) — à confirmer avec Nathalie.
-    id: "hineava-jewelry",
-    nom: "Hineava",
-    title: "Hineava Jewelry",
+    // Nouveau projet "Concept" (Bureaux/Workspaces), photos reçues de la
+    // cliente le 2026-11-08. Lieu, année, surface et mission non
+    // communiqués : champs volontairement absents (même convention
+    // qu'InterContinental Bora Bora ci-dessus) — à confirmer avec Nathalie.
+    id: "concept",
+    nom: "Concept",
+    title: "Concept",
+    subtitle: "Bureaux, noir et jaune.",
+    category: "bureaux",
+    description:
+      "Un espace de bureaux où le bois clair et le jaune graphique structurent la circulation, du mobilier sur mesure jusqu'à la kitchenette.",
+    cover: conceptPhotos[0].src,
+    images: conceptPhotos.map((p) => p.src),
+    photos: conceptPhotos,
+  },
+  {
+    // Projet "HINA" (Retail), nom officiel donné par Nathalie (mail du
+    // 2026-11-08) — catégorisation Hospitality / Residential / Workspaces
+    // / Retail du dossier d'organisation transmis par la cliente. Lieu,
+    // année, surface et mission non communiqués : champs volontairement
+    // absents (même convention qu'InterContinental Bora Bora ci-dessus) —
+    // à confirmer avec Nathalie.
+    id: "hina",
+    nom: "HINA",
+    title: "HINA",
     subtitle: "Un écrin pour la haute joaillerie.",
     category: "retail",
     description:
       "Un rideau de maille métallique tissé du nom de la marque accueille les clients dans un univers sauge et laiton, entre vitrines en bois sombre et salon lounge en velours.",
-    cover: hineavaPhotos[0].src,
-    images: hineavaPhotos.map((p) => p.src),
-    photos: hineavaPhotos,
+    cover: hinaPhotos[0].src,
+    images: hinaPhotos.map((p) => p.src),
+    photos: hinaPhotos,
     gallerySections: [
       {
-        image: hineavaPhotos[0].src,
-        width: hineavaPhotos[0].width,
-        height: hineavaPhotos[0].height,
-        eyebrow: "L'entrée",
-        title: "Un rideau de laiton et de sauge",
-        description:
-          "Le rideau de maille métallique, tissé du nom de la marque, filtre la lumière et annonce l'univers de la boutique avant même d'y pénétrer.",
-      },
-      {
-        image: hineavaPhotos[1].src,
-        width: hineavaPhotos[1].width,
-        height: hineavaPhotos[1].height,
+        image: hinaPhotos[0].src,
+        width: hinaPhotos[0].width,
+        height: hinaPhotos[0].height,
         eyebrow: "Le plafond",
         title: "Une pluie de laiton",
         description:
           "Suspensions sculpturales en laiton, posées comme des fleurs au-dessus du salon d'accueil — la lumière descend en cascade sur les vitrines.",
       },
       {
-        image: hineavaPhotos[3].src,
-        width: hineavaPhotos[3].width,
-        height: hineavaPhotos[3].height,
+        image: hinaPhotos[1].src,
+        width: hinaPhotos[1].width,
+        height: hinaPhotos[1].height,
+        eyebrow: "L'entrée",
+        title: "Un rideau de laiton et de sauge",
+        description:
+          "Le rideau de maille métallique, tissé du nom de la marque, filtre la lumière et annonce l'univers de la boutique avant même d'y pénétrer.",
+      },
+      {
+        image: hinaPhotos[4].src,
+        width: hinaPhotos[4].width,
+        height: hinaPhotos[4].height,
         eyebrow: "Les vitrines",
         title: "L'écrin des pièces",
         description:
           "Le bois sombre et le verre composent un écrin sobre, pensé pour mettre en valeur chaque pièce sans jamais lui faire concurrence.",
       },
       {
-        image: hineavaPhotos[4].src,
-        width: hineavaPhotos[4].width,
-        height: hineavaPhotos[4].height,
+        image: hinaPhotos[5].src,
+        width: hinaPhotos[5].width,
+        height: hinaPhotos[5].height,
         eyebrow: "Le salon",
         title: "S'installer, prendre le temps",
         description:
