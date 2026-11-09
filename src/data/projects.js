@@ -144,6 +144,23 @@ const maisonPhotos = (() => {
 // ailleurs (cartes, accueil) et sert de repli tant que `nom` est absent
 // (voir bannerName dans pages/projets/[id].astro). En attente des 7 noms
 // côté cliente : ne pas en inventer.
+const maisonIndividuellePhotos = (() => {
+  const f = "maison-individuelle";
+  const t = "Maison Individuelle, Punaauia";
+  return [photo(f, "cover", 1600, 1200, `${t} — vue d'ensemble`)];
+})();
+
+const sofitelPhotos = (() => {
+  const f = "sofitel-kia-ora";
+  const t = "Sofitel Kia Ora";
+  return [
+    photo(f, "pool", 2000, 1500, `${t} — le patio : piscine à débordement, parasols orangés sur bois patiné face au lagon`),
+    photo(f, "lounge", 1200, 1600, `${t} — le restaurant, sous les fibres tressées : plafond en fibres tressées, mobilier en rotin et bois brut`),
+    photo(f, "breakfast", 1200, 1600, `${t} — l'art de la table : fruits de saison, fleurs tropicales et vaisselle épurée`),
+    photo(f, "bathroom", 1200, 1600, `${t} — l'espace bien-être : vasques vert sauge sur mosaïque graphique, bois et pierre claire`),
+  ];
+})();
+
 export const projects = [
   {
     id: "maison-particuliere",
@@ -201,61 +218,13 @@ export const projects = [
     mission: "Architecture intérieure & aménagement",
     description:
       "Une réinterprétation contemporaine de l'art de recevoir à la polynésienne. Espaces de vie ouverts sur le jardin, mobilier sur-mesure et palette de matières naturelles pour un accueil sobre et chaleureux.",
-    // Vraies photos fournies par la cliente (les autres projets restent en
-    // placeholder Unsplash pour l'instant).
-    cover: "/images/sofitel-kia-ora/pool.jpg",
-    images: [
-      "/images/sofitel-kia-ora/pool.jpg",
-      "/images/sofitel-kia-ora/lounge.jpg",
-      "/images/sofitel-kia-ora/breakfast.jpg",
-    ],
-    // Dimensions réelles (photos non recadrées au format PSWP_WIDTH/HEIGHT
-    // standard) — nécessaires pour un rendu correctement cadré.
-    imageDims: [
-      [2000, 1500],
-      [1200, 1600],
-      [1200, 1600],
-    ],
-    // Galerie éditoriale grand format (page de détail) — les 4 vraies photos,
-    // chacune avec son texte immersif.
-    gallerySections: [
-      {
-        image: "/images/sofitel-kia-ora/pool.jpg",
-        width: 2000,
-        height: 1500,
-        eyebrow: "Le patio",
-        title: "Face au lagon",
-        description:
-          "Ici, la piscine à débordement se fond dans la ligne d'horizon du lagon. Les parasols orangés ponctuent le bois patiné de la terrasse, entre ombre et lumière, dans un dialogue permanent avec le végétal environnant.",
-      },
-      {
-        image: "/images/sofitel-kia-ora/lounge.jpg",
-        width: 1200,
-        height: 1600,
-        eyebrow: "Le restaurant",
-        title: "Sous les fibres tressées",
-        description:
-          "Le plafond en fibres tressées suspend une pluie de lumière dorée sur la salle. Mobilier en rotin et bois brut composent une atmosphère à la fois raffinée et profondément ancrée dans l'artisanat polynésien.",
-      },
-      {
-        image: "/images/sofitel-kia-ora/breakfast.jpg",
-        width: 1200,
-        height: 1600,
-        eyebrow: "L'art de la table",
-        title: "Le rituel du matin",
-        description:
-          "Fruits de saison, fleurs tropicales fraîchement coupées et vaisselle épurée composent une nature morte quotidienne — un moment suspendu avant que la journée ne commence.",
-      },
-      {
-        image: "/images/sofitel-kia-ora/bathroom.jpg",
-        width: 1200,
-        height: 1600,
-        eyebrow: "L'espace bien-être",
-        title: "Le rituel de l'eau",
-        description:
-          "Les vasques vert sauge se détachent sur la mosaïque graphique, entre bois et pierre claire. Un espace pensé comme une parenthèse sensorielle, loin de l'agitation du monde extérieur.",
-      },
-    ],
+    // Vraies photos fournies par la cliente. Galerie en séquence pure façon
+    // lauragonzalez.fr (plus de légende par photo depuis le 2026-11-09) —
+    // le texte immersif qui était ici vit maintenant dans `description`
+    // ci-dessus, affichée une seule fois en intro de fiche.
+    cover: sofitelPhotos[0].src,
+    images: sofitelPhotos.map((p) => p.src),
+    photos: sofitelPhotos,
   },
   {
     // Vrai projet, texte repris du site officiel de la cliente
@@ -277,44 +246,7 @@ export const projects = [
     cover: niuPhotos[0].src,
     images: niuPhotos.map((p) => p.src),
     photos: niuPhotos,
-    gallerySections: [
-      {
-        image: niuPhotos[0].src,
-        width: niuPhotos[0].width,
-        height: niuPhotos[0].height,
-        eyebrow: "La chambre",
-        title: "Un salon sous le signe du NIU",
-        description:
-          "Le motif graphique polynésien habille la tête de lit et se prolonge jusqu'au salon ouvert sur la suite — une signature discrète, répétée d'un espace à l'autre.",
-      },
-      {
-        image: niuPhotos[1].src,
-        width: niuPhotos[1].width,
-        height: niuPhotos[1].height,
-        eyebrow: "La réception",
-        title: "Bois clair et lumière rasante",
-        description:
-          "La banque d'accueil, rétroéclairée et en bois clair, donne le ton dès l'entrée : un tropical minimaliste, épuré, où chaque matière respire.",
-      },
-      {
-        image: niuPhotos[2].src,
-        width: niuPhotos[2].width,
-        height: niuPhotos[2].height,
-        eyebrow: "Le petit-déjeuner",
-        title: "Sous le signe du cocotier",
-        description:
-          "Le « NIU » se retrouve en grand sur le mur de la salle de petit-déjeuner, entouré de rotin tressé et de tons chauds — l'accueil et la paix, en filigrane.",
-      },
-      {
-        image: niuPhotos[3].src,
-        width: niuPhotos[3].width,
-        height: niuPhotos[3].height,
-        eyebrow: "Le buffet",
-        title: "Rotin tressé et tons chauds",
-        description:
-          "Suspensions en rotin et mobilier clair composent un buffet à la fois fonctionnel et chaleureux, dans la continuité du reste de la réception.",
-      },
-    ],
+
   },
   {
     // Vrai projet — texte fourni par la cliente, photos HD (galerie libre).
@@ -352,9 +284,9 @@ export const projects = [
     mission: "Aménagement intérieur et décoration d'une maison individuelle",
     description:
       "Une oasis de modernité et de fraîcheur tropicale, où chaque détail est pensé pour évoquer un sentiment de sérénité et d'évasion — l'harmonie parfaite entre design contemporain et influences tropicales.",
-    cover: "/images/maison-individuelle/cover.jpg",
-    images: ["/images/maison-individuelle/cover.jpg"],
-    imageDims: [[1600, 1200]],
+    cover: maisonIndividuellePhotos[0].src,
+    images: maisonIndividuellePhotos.map((p) => p.src),
+    photos: maisonIndividuellePhotos,
   },
   {
     id: "agence-communication-bureaux",
@@ -388,44 +320,7 @@ export const projects = [
     cover: conceptPhotos[0].src,
     images: conceptPhotos.map((p) => p.src),
     photos: conceptPhotos,
-    gallerySections: [
-      {
-        image: conceptPhotos[1].src,
-        width: conceptPhotos[1].width,
-        height: conceptPhotos[1].height,
-        eyebrow: "L'open space",
-        title: "Un trait jaune pour guider le regard",
-        description:
-          "Un grand cadre jaune structure la circulation entre les postes de travail — un repère graphique simple qui organise l'espace sans jamais l'alourdir.",
-      },
-      {
-        image: conceptPhotos[2].src,
-        width: conceptPhotos[2].width,
-        height: conceptPhotos[2].height,
-        eyebrow: "La mezzanine",
-        title: "Le métal déployé en suspension",
-        description:
-          "Un garde-corps en métal déployé noir surplombe les bureaux cloisonnés, apportant de la transparence sans sacrifier l'intimité de chaque poste.",
-      },
-      {
-        image: conceptPhotos[6].src,
-        width: conceptPhotos[6].width,
-        height: conceptPhotos[6].height,
-        eyebrow: "La réunion",
-        title: "Un plein cadre jaune",
-        description:
-          "La salle de réunion assume la couleur jusqu'au plafond — un geste franc qui marque les esprits et affirme l'identité du lieu.",
-      },
-      {
-        image: conceptPhotos[7].src,
-        width: conceptPhotos[7].width,
-        height: conceptPhotos[7].height,
-        eyebrow: "La kitchenette",
-        title: "Jaune jusqu'au bout",
-        description:
-          "Même la pause-café a droit à sa touche de couleur : tabourets hauts jaunes devant un plan de travail noir, pour un espace de vie cohérent de bout en bout.",
-      },
-    ],
+
   },
   {
     // Projet "HINA" (Retail), nom officiel donné par Nathalie (mail du
@@ -444,44 +339,7 @@ export const projects = [
     cover: hinaPhotos[0].src,
     images: hinaPhotos.map((p) => p.src),
     photos: hinaPhotos,
-    gallerySections: [
-      {
-        image: hinaPhotos[0].src,
-        width: hinaPhotos[0].width,
-        height: hinaPhotos[0].height,
-        eyebrow: "Le plafond",
-        title: "Une pluie de laiton",
-        description:
-          "Suspensions sculpturales en laiton, posées comme des fleurs au-dessus du salon d'accueil — la lumière descend en cascade sur les vitrines.",
-      },
-      {
-        image: hinaPhotos[1].src,
-        width: hinaPhotos[1].width,
-        height: hinaPhotos[1].height,
-        eyebrow: "L'entrée",
-        title: "Un rideau de laiton et de sauge",
-        description:
-          "Le rideau de maille métallique, tissé du nom de la marque, filtre la lumière et annonce l'univers de la boutique avant même d'y pénétrer.",
-      },
-      {
-        image: hinaPhotos[4].src,
-        width: hinaPhotos[4].width,
-        height: hinaPhotos[4].height,
-        eyebrow: "Les vitrines",
-        title: "L'écrin des pièces",
-        description:
-          "Le bois sombre et le verre composent un écrin sobre, pensé pour mettre en valeur chaque pièce sans jamais lui faire concurrence.",
-      },
-      {
-        image: hinaPhotos[5].src,
-        width: hinaPhotos[5].width,
-        height: hinaPhotos[5].height,
-        eyebrow: "Le salon",
-        title: "S'installer, prendre le temps",
-        description:
-          "Une banquette courbe en velours sauge et des fauteuils bleu canard composent un salon lounge, pour un essayage pris dans le temps long.",
-      },
-    ],
+
   },
 ];
 

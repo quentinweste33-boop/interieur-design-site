@@ -2,17 +2,20 @@
 ---
 
 <!--
-  TODO avant mise en ligne : renseigner un endpoint de formulaire sans backend
-  (Formspree, Web3Forms...) dans l'attribut action ci-dessous, une fois
-  l'adresse email de reception confirmee par la cliente. Le mailto ci-dessous
-  sert de secours immediat.
+  Formulaire branché sur FormSubmit (https://formsubmit.co), sans compte ni
+  backend à gérer : les envois arrivent par email à interieurdesigntahiti@gmail.com.
+  Au tout premier envoi, FormSubmit demande une confirmation unique par email
+  (lien à cliquer une seule fois) avant d'activer la réception — c'est normal.
 -->
 <form
-  action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+  action="https://formsubmit.co/interieurdesigntahiti@gmail.com"
   method="POST"
   class="space-y-8"
   data-reveal
 >
+  <input type="hidden" name="_subject" value="Nouveau message — site Interieur Design Tahiti" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="true" />
   <div>
     <label for="name" class="mb-2 block text-xs tracking-wide text-anthracite/60 uppercase"
       >Nom</label

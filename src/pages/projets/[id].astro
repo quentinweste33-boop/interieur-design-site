@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ProjectStoryGallery from "../../components/ProjectStoryGallery.astro";
 import ProjectPhotoGallery from "../../components/ProjectPhotoGallery.astro";
 import BrandDivider from "../../components/BrandDivider.astro";
-import { categories, projects, getGallerySections } from "../../data/projects";
+import { categories, projects } from "../../data/projects";
 
 export async function getStaticPaths() {
   return projects.map((project) => ({
@@ -41,8 +40,6 @@ const metaColumns = {
 
 // Texte de présentation : plusieurs paragraphes (body) ou un seul (description).
 const paragraphs = project.body ?? [project.description];
-
-const gallerySections = project.photos ? [] : getGallerySections(project);
 ---
 
 <BaseLayout
@@ -131,13 +128,7 @@ const gallerySections = project.photos ? [] : getGallerySections(project);
 
     <div class="mt-24 md:mt-32">
       <BrandDivider class="mb-20 md:mb-24" />
-      {
-        project.photos ? (
-          <ProjectPhotoGallery photos={project.photos} />
-        ) : (
-          <ProjectStoryGallery entries={gallerySections} projectTitle={project.title} />
-        )
-      }
+      <ProjectPhotoGallery photos={project.photos} />
     </div>
   </section>
 </BaseLayout>

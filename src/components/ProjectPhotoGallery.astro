@@ -1,13 +1,15 @@
 ---
-// Galerie photo libre grand format pour les projets à texte unique (voir
-// `photos` dans data/projects.js) : les photos gardent leur ordre, chacune à
-// son ratio d'origine (aucun recadrage, donc aucune photo tronquée) et jamais
-// affichée au-delà de sa taille réelle, pour ne pas flouter les sources
-// basse résolution.
+// Galerie photo en séquence pure, inspirée de lauragonzalez.fr/projets/ :
+// aucune légende sur les photos (le texte d'intro vit une seule fois en
+// haut de la fiche projet), alternance plein cadre / 2 photos accolées,
+// bord à bord (aucun espace horizontal ni vertical entre les images), et
+// chaque photo garde son ratio d'origine (aucun recadrage, donc aucune
+// photo tronquée) sans jamais être affichée au-delà de sa taille réelle,
+// pour ne pas flouter les sources basse résolution.
 //
 // Mise en page : les paysages HD (>= 1600 px) occupent toute la largeur ;
-// les autres photos se rangent deux par deux ; une photo restée seule est
-// centrée sur une demi-largeur.
+// les autres photos se rangent deux par deux, collées l'une à l'autre ;
+// une photo restée seule est centrée sur une demi-largeur.
 interface Photo {
   src: string;
   width: number;
@@ -34,7 +36,7 @@ for (let i = 0; i < photos.length; i++) {
 }
 ---
 
-<div class="space-y-6 md:space-y-8">
+<div class="space-y-0">
   {
     rows.map((row) => {
       const single = row.length === 1;
@@ -45,8 +47,8 @@ for (let i = 0; i < photos.length; i++) {
             single
               ? wide
                 ? ""
-                : "mx-auto md:w-[calc(50%-1rem)]"
-              : "grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-8"
+                : "mx-auto md:w-1/2"
+              : "grid grid-cols-1 items-center gap-0 md:grid-cols-2"
           }
           data-reveal
         >
