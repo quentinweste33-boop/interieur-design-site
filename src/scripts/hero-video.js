@@ -1,19 +1,15 @@
-// En dessous de 768px : pas de vidéo, seul le poster (déjà affiché en <img>)
-// est servi, pour ne pas plomber le temps de chargement mobile.
-const ELIGIBLE_QUERY = "(min-width: 768px)";
-// Entre 768px et 1280px (tablettes, petits laptops, connexions souvent plus
-// contraintes) : version 720p plus légère plutôt que la 1080p desktop.
+// La vidéo joue désormais sur tous les écrans, y compris mobile : seule la
+// qualité varie pour rester légère sur les petits écrans/connexions.
+// En dessous de 1280px (mobile, tablette, petits laptops) : version 720p
+// plus légère (hero-lite.mp4) ; au-dessus, la 1080p desktop.
 const HIGH_QUALITY_QUERY = "(min-width: 1280px)";
-
-let mediaQueryListenerAttached = false;
 
 function loadHeroVideo() {
   const video = document.querySelector("[data-hero-video]");
   if (!video || video.dataset.loaded === "true") return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const eligible = window.matchMedia(ELIGIBLE_QUERY).matches;
-  if (reduceMotion || !eligible) return;
+  if (reduceMotion) return;
 
   const isHighQuality = window.matchMedia(HIGH_QUALITY_QUERY).matches;
   const src = isHighQuality ? video.dataset.src : video.dataset.srcLite;
@@ -58,14 +54,6 @@ function loadHeroVideo() {
 
 function initHeroVideo() {
   loadHeroVideo();
-
-  if (!mediaQueryListenerAttached) {
-    const mql = window.matchMedia(ELIGIBLE_QUERY);
-    const handler = () => loadHeroVideo();
-    if (mql.addEventListener) mql.addEventListener("change", handler);
-    else mql.addListener(handler);
-    mediaQueryListenerAttached = true;
-  }
 }
 
 document.addEventListener("astro:page-load", initHeroVideo);

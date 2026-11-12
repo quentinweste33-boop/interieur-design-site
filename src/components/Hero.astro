@@ -4,11 +4,11 @@ import { heroPoster } from "../data/projects";
 
 <section class="relative h-screen w-full overflow-hidden">
   <!-- Vraie vidéo hero (Sofitel Kia Ora, Moorea) fournie par la cliente,
-       ré-encodée en H.264 faststart. Deux qualités selon la largeur d'écran
-       (voir hero-video.js) ; le poster (frame extraite) reste visible en
-       dessous et la vidéo apparaît en fondu une fois la lecture démarrée,
-       pour éviter tout flash ou saut visuel. Mobile (<768px) ne charge
-       aucune vidéo, seul le poster s'affiche. -->
+       ré-encodée en H.264 faststart. Joue sur tous les écrans, y compris
+       mobile ; deux qualités selon la largeur d'écran (voir hero-video.js)
+       pour rester léger sur mobile/tablette. Le poster (frame extraite)
+       reste visible en dessous et la vidéo apparaît en fondu une fois la
+       lecture démarrée, pour éviter tout flash ou saut visuel. -->
   <img
     src={heroPoster}
     alt=""
