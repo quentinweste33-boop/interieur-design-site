@@ -161,6 +161,95 @@ const sofitelPhotos = (() => {
   ];
 })();
 
+const atnPhotos = (() => {
+  const f = "atn";
+  const t = "ATN";
+  return [
+    photo(f, "01", 2000, 1333, `${t} — accueil : banque en bois clair façon passerelle, hublots lumineux au sol`),
+    photo(f, "02", 2000, 1333, `${t} — lounge : banquette bleu canard, fauteuils jaune moutarde et bois clair`),
+    photo(f, "03", 2000, 1333, `${t} — salle de réunion : mur végétal graphique monstera, grande table bois`),
+    photo(f, "04", 2000, 1333, `${t} — poste de travail technique, mur typographique « modélisation »`),
+    photo(f, "05", 2000, 1333, `${t} — openspace : colonnes bois façon troncs d'arbres entre les postes`),
+    photo(f, "06", 2000, 1333, `${t} — couloir : portraits de tiki marquisiens sur mur vert sauge`),
+    photo(f, "07", 2000, 1333, `${t} — salle de réunion : mur typographique « authentique, moana, passion »`),
+    photo(f, "08", 1333, 2000, `${t} — détail du mur « spirit » et fauteuil jaune`),
+    photo(f, "09", 2000, 1333, `${t} — lounge : mur à motif de palmiers, banquette verte et poufs`),
+  ];
+})();
+
+const villaBoraBoraPhotos = (() => {
+  const f = "villa-bora-bora";
+  const t = "Résidence privée, Bora Bora";
+  return [
+    photo(f, "01", 2000, 1333, `${t} — cuisine : îlot sombre sous un plafond en dentelle de métal noir à motif de feuilles`),
+    photo(f, "02", 1379, 2000, `${t} — claustra en métal découpé façon feuillage, séparation salon/cuisine`),
+    photo(f, "03", 2000, 1333, `${t} — chambre : tête de lit en bois tressé rétroéclairée, coussin motif tropical`),
+    photo(f, "04", 2000, 1333, `${t} — chambre bleu canard : tête de lit tressée, télévision encastrée`),
+    photo(f, "05", 1406, 1999, `${t} — salle de bain : douche carrelée anthracite, niche éclairée`),
+    photo(f, "06", 2000, 1333, `${t} — niche murale carrelée, ananas décoratif et serviettes roulées`),
+    photo(f, "07", 1442, 2000, `${t} — dressing sur mesure, rangements ouverts et penderie`),
+    photo(f, "08", 1082, 1454, `${t} — baignoire d'angle, niche murale et fleur tropicale`),
+    photo(f, "09", 2000, 1333, `${t} — entrée : bibliothèque murale sur mesure en bois clair`),
+  ];
+})();
+
+const hotelRevaPhotos = (() => {
+  const f = "hotel-reva";
+  const t = "Hôtel Le Reva";
+  return [
+    photo(f, "01", 2000, 1333, `${t} — lobby : colonne habillée de corde tressée, suspensions à cordages`),
+    photo(f, "02", 2000, 1333, `${t} — lobby : vue d'ensemble sur les coins salon et la mezzanine à cordages`),
+    photo(f, "03", 2000, 1333, `${t} — lobby, vue sur l'entrée et la rue depuis les fauteuils beiges`),
+    photo(f, "04", 2000, 1333, `${t} — salon : canapé courbe terracotta bouclé, tables basses en travertin`),
+    photo(f, "05", 2000, 1333, `${t} — lobby : coin salon sous la mezzanine, lumière tamisée`),
+    photo(f, "06", 2000, 1333, `${t} — salle du petit-déjeuner : verrière et fresque végétale, tables dressées`),
+    photo(f, "07", 2000, 1333, `${t} — salle du petit-déjeuner, autre angle sous la verrière`),
+    // Les 3 photos suivantes étaient créditées à @marine_sja (compte
+    // Instagram) dans le lot original — droits confirmés par Nathalie
+    // (mail du 2026-11-12), réintégrées.
+    photo(f, "08", 1333, 2000, `${t} — salle du petit-déjeuner : table dressée, mur à motif floral tropical`),
+    photo(f, "09", 1333, 2000, `${t} — salle du petit-déjeuner, vue sur les tables et le comptoir buffet`),
+    photo(f, "10", 1333, 2000, `${t} — buffet du petit-déjeuner, photographies encadrées au mur`),
+  ];
+})();
+
+const sagePhotos = (() => {
+  const f = "sage";
+  const t = "Résidence privée, Moorea";
+  // Photos reçues en 640px seulement (bien plus bas que les 2000px standard du
+  // site) : passées en sur-échantillonnage IA (ESPCN x4) + léger renforcement
+  // de netteté pour revenir au gabarit habituel. Dimensions ci-dessous =
+  // celles des fichiers réellement livrés après ce traitement.
+  return [
+    photo(f, "01", 1334, 2000, `${t} — patio : tiki sculpté cadré par une baie vitrée, jardin tropical`),
+    photo(f, "02", 2000, 1334, `${t} — bibliothèque sur mesure en bois clair, salon et fauteuil cuir`),
+    photo(f, "03", 2000, 1334, `${t} — salon : verrière acier noir ouverte sur le jardin, fauteuil et ottoman Eames`),
+    photo(f, "04", 2000, 1334, `${t} — cuisine : îlot central anthracite, niche jaune et suspensions circulaires`),
+    photo(f, "05", 1334, 2000, `${t} — bibliothèque, détail de la niche vitrée jaune`),
+    photo(f, "06", 2000, 1334, `${t} — cuisine, vue vers la baie vitrée et le jardin`),
+    photo(f, "07", 1334, 2000, `${t} — patio : bassin et mur végétal entre claustras de bois`),
+    photo(f, "08", 2000, 1334, `${t} — salle de bain : double vasque et miroir rond rétroéclairé`),
+    photo(f, "09", 1334, 2000, `${t} — dressing sur mesure tout en hauteur`),
+    photo(f, "10", 1334, 2000, `${t} — douche à l'italienne, claustras de bois brut`),
+    photo(f, "11", 1334, 2000, `${t} — couloir des chambres, portes en bois massif`),
+  ];
+})();
+
+const salleDeBainsClaudiaPhotos = (() => {
+  const f = "salle-de-bains-claudia";
+  const t = "Salle de bains Claudia";
+  return [
+    photo(f, "01", 2000, 1500, `${t} — WC : papier peint feuillage dessiné à la main, fenêtre persienne bois`),
+    photo(f, "02", 1500, 2000, `${t} — WC, vue sur le claustra de bois vertical`),
+    photo(f, "03", 1500, 2000, `${t} — douche à l'italienne derrière des claustras de bois brut`),
+    photo(f, "04", 2000, 1500, `${t} — double vasque sous miroirs ronds rétroéclairés, claustra bois`),
+    photo(f, "05", 1500, 2000, `${t} — double vasque, plan bois et rangements ouverts`),
+    photo(f, "06", 1500, 2000, `${t} — double vasque, vue sur les miroirs ronds et la fenêtre persienne`),
+    photo(f, "07", 1500, 2000, `${t} — double vasque, autre angle sur le papier peint feuillage`),
+    photo(f, "08", 1500, 2000, `${t} — détail du claustra de bois séparant la douche`),
+  ];
+})();
+
 export const projects = [
   {
     id: "maison-particuliere",
@@ -340,6 +429,89 @@ export const projects = [
     images: hinaPhotos.map((p) => p.src),
     photos: hinaPhotos,
 
+  },
+  {
+    // ATN = Air Tahiti Nui (confirmé par Quentin, 2026-11-12).
+    id: "atn",
+    nom: "ATN",
+    title: "Air Tahiti Nui",
+    subtitle: "Siège social, bureaux d'entreprise.",
+    category: "bureaux",
+    description:
+      "Le siège de la compagnie aérienne nationale, pensé comme un territoire polynésien : cloisons à motifs graphiques et portraits marquisiens, alcôves en bois pour les échanges informels et mobilier modulable pour le travail collaboratif.",
+    cover: atnPhotos[0].src,
+    images: atnPhotos.map((p) => p.src),
+    photos: atnPhotos,
+  },
+  {
+    // "BORA" = libellé exact de Nathalie ("Residentiel - BORA", mail du
+    // 2026-11-12). Projet résidentiel distinct de la fiche hôtelière
+    // "InterContinental Bora Bora" déjà en ligne.
+    id: "villa-bora-bora",
+    nom: "BORA",
+    title: "Résidence privée",
+    subtitle: "Villa, Bora Bora.",
+    category: "residentiel",
+    location: "Bora Bora",
+    description:
+      "Une villa où le végétal se découpe en dentelle de métal noir — claustras à motif de feuilles tropicales entre cuisine et salon, têtes de lit en bois tressé rétroéclairées, salle de bain minérale ouverte sur un patio de pierre.",
+    cover: villaBoraBoraPhotos[0].src,
+    images: villaBoraBoraPhotos.map((p) => p.src),
+    photos: villaBoraBoraPhotos,
+  },
+  {
+    // "LE REVA" = libellé exact de Nathalie. 3 photos du lot original
+    // ("Hotel Reva Tahiti - @marine_sja...") créditées à un compte
+    // Instagram tiers ont été écartées par prudence (droits d'auteur
+    // incertains) — à confirmer avec elle si on veut les réintégrer.
+    id: "hotel-reva",
+    nom: "LE REVA",
+    title: "Hôtel Le Reva",
+    subtitle: "Lobby & restaurant.",
+    category: "hotels",
+    description:
+      "Un lobby suspendu de cordages tressés autour d'une colonne habillée de corde, canapé courbe terracotta et fauteuils en bouclé — une parenthèse tropicale feutrée avant la salle du petit-déjeuner, sous sa verrière et sa fresque végétale.",
+    cover: hotelRevaPhotos[0].src,
+    images: hotelRevaPhotos.map((p) => p.src),
+    photos: hotelRevaPhotos,
+  },
+  {
+    // "SAGE" = libellé exact de Nathalie ("Résidentiel - SAGE"). Le
+    // document fourni avec les photos ("maison Nicolas.docx") révèle qu'il
+    // s'agit en réalité de « la maison de Manon et Louis », Moorea,
+    // rénovée avec l'atelier paysager Nature d'Art — texte volontairement
+    // anonymisé ici (pas de prénoms de clients) en attendant confirmation
+    // de Nathalie sur l'usage de ce document pour le site public. Dims
+    // photos volontairement petites (640px) : résolution d'origine fournie,
+    // plus basse que les autres projets — à signaler.
+    id: "sage",
+    nom: "SAGE",
+    title: "Résidence privée",
+    subtitle: "Rénovation, Moorea.",
+    category: "residentiel",
+    location: "Moorea",
+    surface: "200 m² habitables (terrain de 2100 m²)",
+    mission: "Rénovation complète et aménagement intérieur, en collaboration avec l'atelier paysager Nature d'Art pour les extérieurs",
+    description:
+      "Une rénovation complète qui rouvre les volumes et renoue avec les restanques en pierre de Moorea déjà en place — trois poumons de verdure, pensés avec l'atelier paysager Nature d'Art, infusent la maison jusque dans la bibliothèque et la salle de bain.",
+    cover: sagePhotos[0].src,
+    images: sagePhotos.map((p) => p.src),
+    photos: sagePhotos,
+  },
+  {
+    // "SDB Zen" (mail de Nathalie) = Salle de bains Claudia-Zen, citée dans
+    // le point projet précédent. Pas de nom de marque/bannière ici (nom:
+    // null), "Claudia" est le prénom déjà utilisé en interne par Nathalie.
+    id: "salle-de-bains-claudia",
+    nom: null,
+    title: "Salle de bains Claudia",
+    subtitle: "Rénovation, ambiance zen.",
+    category: "residentiel",
+    description:
+      "Un vestiaire habillé d'un papier peint feuillage dessiné à la main, une double vasque sous miroirs ronds rétroéclairés et une douche à l'italienne derrière des claustras de bois brut — une rénovation complète pensée comme une parenthèse zen.",
+    cover: salleDeBainsClaudiaPhotos[0].src,
+    images: salleDeBainsClaudiaPhotos.map((p) => p.src),
+    photos: salleDeBainsClaudiaPhotos,
   },
 ];
 
