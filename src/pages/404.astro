@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page introuvable"
+  description="Cette page n'existe pas ou plus."
+>
+  <section class="flex min-h-[60vh] flex-col items-center justify-center px-6 py-24 text-center">
+    <p class="text-xs tracking-[0.35em] text-bronze uppercase" data-reveal>Erreur 404</p>
+    <h1 class="mt-4 font-serif text-4xl leading-tight font-normal md:text-5xl" data-reveal>
+      Cette page n'existe pas
+    </h1>
+    <p class="mt-6 max-w-md leading-relaxed text-anthracite/80" data-reveal>
+      Le lien suivi est peut-être obsolète, ou l'adresse comporte une erreur.
+      Vous pouvez retrouver nos réalisations ou revenir à l'accueil.
+    </p>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-6" data-reveal>
+      <a
+        href="/"
+        class="border border-anthracite/70 px-8 py-3 text-xs tracking-[0.2em] text-anthracite uppercase transition-colors hover:bg-anthracite hover:text-ivoire"
+      >
+        Retour à l'accueil
+      </a>
+      <a
+        href="/projets"
+        class="border-b border-anthracite/40 pb-1 text-sm tracking-wide hover:border-anthracite"
+      >
+        Voir les projets →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

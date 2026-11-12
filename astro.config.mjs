@@ -2,12 +2,15 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   // Provisoire : à remplacer par le nom de domaine définitif une fois réservé.
-  // Sert de base aux URLs canoniques et aux balises Open Graph (SEO).
+  // Sert de base aux URLs canoniques, aux balises Open Graph (SEO) et au
+  // sitemap généré automatiquement (@astrojs/sitemap, voir integrations).
   site: 'https://interieur-design.pf',
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
     server: {

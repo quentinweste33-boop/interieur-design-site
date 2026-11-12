@@ -173,7 +173,10 @@ const atnPhotos = (() => {
     photo(f, "06", 2000, 1333, `${t} — couloir : portraits de tiki marquisiens sur mur vert sauge`),
     photo(f, "07", 2000, 1333, `${t} — salle de réunion : mur typographique « authentique, moana, passion »`),
     photo(f, "08", 1333, 2000, `${t} — détail du mur « spirit » et fauteuil jaune`),
-    photo(f, "09", 2000, 1333, `${t} — lounge : mur à motif de palmiers, banquette verte et poufs`),
+    // La 9e photo du lot original (lounge, mur à motif de palmiers) a été
+    // écartée : une personne en mouvement (floutée) y est visible au premier
+    // plan, ce qui tranche avec le reste du site (aucune personne visible
+    // dans les autres galeries). À réintégrer sur simple demande.
   ];
 })();
 
