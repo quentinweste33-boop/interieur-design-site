@@ -9,6 +9,11 @@ const lenis = new Lenis({
   smoothWheel: true,
 });
 
+// Exposée pour que d'autres scripts (ex. la lightbox de la galerie photo)
+// puissent mettre le scroll en pause pendant qu'une vue plein écran est
+// ouverte, sans dupliquer d'instance Lenis.
+window.__lenis = lenis;
+
 lenis.on("scroll", ScrollTrigger.update);
 
 gsap.ticker.add((time) => {

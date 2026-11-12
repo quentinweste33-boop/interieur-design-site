@@ -10,6 +10,12 @@
 // Mise en page : les paysages HD (>= 1600 px) occupent toute la largeur ;
 // les autres photos se rangent deux par deux, collées l'une à l'autre ;
 // une photo restée seule est centrée sur une demi-largeur.
+//
+// Effet « WOW » demandé par la cliente : léger zoom au survol (desktop),
+// révélation en mise au point (flou → net, au lieu du simple fondu du
+// texte) au défilement, et une visionneuse plein écran au clic avec
+// navigation clavier/flèches, compteur de photos et pause du scroll fluide
+// (Lenis) pendant qu'elle est ouverte.
 interface Photo {
   src: string;
   width: number;
@@ -25,22 +31,26 @@ const { photos } = Astro.props;
 
 const isWide = (p: Photo) => p.width > p.height && p.width >= 1600;
 
-const rows: Photo[][] = [];
+type Cell = { photo: Photo; index: number };
+const rows: Cell[][] = [];
 for (let i = 0; i < photos.length; i++) {
   if (isWide(photos[i]) || i === photos.length - 1 || isWide(photos[i + 1])) {
-    rows.push([photos[i]]);
+    rows.push([{ photo: photos[i], index: i }]);
   } else {
-    rows.push([photos[i], photos[i + 1]]);
+    rows.push([
+      { photo: photos[i], index: i },
+      { photo: photos[i + 1], index: i + 1 },
+    ]);
     i++;
   }
 }
 ---
 
-<div class="space-y-0">
+<div class="space-y-0" data-photo-gallery>
   {
     rows.map((row) => {
       const single = row.length === 1;
-      const wide = single && isWide(row[0]);
+      const wide = single && isWide(row[0].photo);
       return (
         <div
           class={
@@ -50,22 +60,140 @@ for (let i = 0; i < photos.length; i++) {
                 : "mx-auto md:w-1/2"
               : "grid grid-cols-1 items-center gap-0 md:grid-cols-2"
           }
-          data-reveal
+          data-reveal-photo
         >
-          {row.map((photo) => (
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              loading="lazy"
-              decoding="async"
-              width={photo.width}
-              height={photo.height}
-              style={`max-width:${photo.width}px`}
-              class="mx-auto block h-auto w-full bg-beige"
-            />
+          {row.map(({ photo, index }) => (
+            <button
+              type="button"
+              class="group block w-full cursor-zoom-in overflow-hidden bg-beige"
+              data-gallery-trigger
+              data-index={index}
+              aria-label={`Agrandir la photo : ${photo.alt}`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+                width={photo.width}
+                height={photo.height}
+                style={`max-width:${photo.width}px`}
+                data-gallery-img
+                class="mx-auto block h-auto w-full scale-100 transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              />
+            </button>
           ))}
         </div>
       );
     })
   }
 </div>
+
+<script>
+  // Visionneuse plein écran partagée par toutes les galeries de la page.
+  // Les éléments de l'overlay et leurs écouteurs (fermer/précédent/suivant/
+  // clavier) ne sont créés qu'une seule fois (singleton), même si la page
+  // est rechargée plusieurs fois via les View Transitions d'Astro ; seuls
+  // les déclencheurs de chaque galerie (recréés à chaque navigation) sont
+  // ré-attachés à chaque "astro:page-load".
+  let overlayApi: { open: (imgs: Element[], index: number) => void } | null = null;
+
+  function buildOverlay() {
+    const overlay = document.createElement("div");
+    overlay.id = "photo-lightbox";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.className =
+      "fixed inset-0 z-[100] hidden items-center justify-center bg-anthracite/95 p-4 md:p-10";
+    overlay.innerHTML = `
+      <button type="button" data-lightbox-close aria-label="Fermer" class="absolute right-4 top-4 flex h-11 w-11 items-center justify-center text-2xl text-beige/80 transition-colors hover:text-beige md:right-8 md:top-8">&#10005;</button>
+      <button type="button" data-lightbox-prev aria-label="Photo précédente" class="absolute left-2 flex h-11 w-11 items-center justify-center text-3xl text-beige/70 transition-colors hover:text-beige md:left-6">&#8249;</button>
+      <button type="button" data-lightbox-next aria-label="Photo suivante" class="absolute right-2 flex h-11 w-11 items-center justify-center text-3xl text-beige/70 transition-colors hover:text-beige md:right-6">&#8250;</button>
+      <img data-lightbox-img class="max-h-[92vh] max-w-[92vw] object-contain" src="" alt="" />
+      <p data-lightbox-counter class="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm tracking-wide text-beige/70 md:bottom-8"></p>
+    `;
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  function ensureOverlay() {
+    if (overlayApi) return overlayApi;
+
+    const overlay = buildOverlay();
+    const imgEl = overlay.querySelector("[data-lightbox-img]") as HTMLImageElement;
+    const counterEl = overlay.querySelector("[data-lightbox-counter]") as HTMLElement;
+    const closeBtn = overlay.querySelector("[data-lightbox-close]") as HTMLElement;
+    const prevBtn = overlay.querySelector("[data-lightbox-prev]") as HTMLElement;
+    const nextBtn = overlay.querySelector("[data-lightbox-next]") as HTMLElement;
+
+    let photos: { src: string; alt: string }[] = [];
+    let current = 0;
+    let isOpen = false;
+
+    function show(i: number) {
+      if (!photos.length) return;
+      current = (i + photos.length) % photos.length;
+      const p = photos[current];
+      imgEl.src = p.src;
+      imgEl.alt = p.alt;
+      counterEl.textContent = `${current + 1} / ${photos.length}`;
+    }
+
+    function open(imgs: Element[], index: number) {
+      photos = imgs.map((img) => {
+        const el = img as HTMLImageElement;
+        return { src: el.currentSrc || el.src, alt: el.alt };
+      });
+      isOpen = true;
+      overlay.classList.remove("hidden");
+      overlay.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      (window as any).__lenis?.stop();
+      show(index);
+    }
+
+    function close() {
+      if (!isOpen) return;
+      isOpen = false;
+      overlay.classList.add("hidden");
+      overlay.classList.remove("flex");
+      document.body.style.overflow = "";
+      (window as any).__lenis?.start();
+    }
+
+    closeBtn.addEventListener("click", close);
+    prevBtn.addEventListener("click", () => show(current - 1));
+    nextBtn.addEventListener("click", () => show(current + 1));
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!isOpen) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+
+    overlayApi = { open };
+    return overlayApi;
+  }
+
+  function initPhotoGalleries() {
+    const galleries = document.querySelectorAll("[data-photo-gallery]");
+    if (!galleries.length) return;
+
+    const api = ensureOverlay();
+
+    galleries.forEach((gallery) => {
+      gallery.querySelectorAll("[data-gallery-trigger]").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          const imgs = Array.from(gallery.querySelectorAll("[data-gallery-img]"));
+          const index = Number(trigger.getAttribute("data-index") || "0");
+          api.open(imgs, index);
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initPhotoGalleries);
+</script>

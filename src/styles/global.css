@@ -59,6 +59,15 @@ html.lenis body {
   transform: translateY(28px);
 }
 
+/* Révélation "premium" des photos de galerie projet : légère mise au point
+   (flou qui se dissipe) + zoom-out doux, distincte du fondu/translation du
+   texte ci-dessus. */
+[data-reveal-photo] {
+  opacity: 0;
+  transform: translateY(24px) scale(1.04);
+  filter: blur(6px);
+}
+
 /* Visible focus ring for keyboard navigation (header, filtres, formulaire,
    cartes de projets, carrousels). */
 a:focus-visible,
@@ -74,6 +83,12 @@ textarea:focus-visible {
   [data-stagger-item] {
     opacity: 1;
     transform: none;
+  }
+
+  [data-reveal-photo] {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }
 
